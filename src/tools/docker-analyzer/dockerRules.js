@@ -592,7 +592,6 @@ const RULES = [
 
         if (packageTokens.length === 0) return
 
-        // Consider a token "pinned" if it contains a version operator
         const hasUnpinned = packageTokens.some((pkg) => !/[=<>~]/.test(pkg))
 
         if (!hasUnpinned) return
@@ -627,7 +626,6 @@ const RULES = [
         if (!/^RUN\s+/i.test(trimmed)) return
         if (!/apt-get\s+.*install/i.test(trimmed)) return
 
-        // If the line already has -y or --yes, skip
         if (/\s-(y)\b/i.test(trimmed) || /\s--yes\b/i.test(trimmed)) return
 
         findings.push({
