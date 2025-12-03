@@ -17,25 +17,40 @@ function Home({ onSelectTool }) {
         <div className="grid gap-4 sm:grid-cols-2">
           <ToolCard
             title="Docker Image Security Analyzer"
-            description="Paste or upload a Dockerfile to detect common security and hardening issues: unsafe base images, missing USER, risky ports, and more."
+            description="Paste or upload a Dockerfile to detect common security and hardening issues: unsafe base images, risky ports, secrets, and more."
             status="available"
             onClick={() => onSelectTool('docker-analyzer')}
           />
 
-          {/* Future tools */}
+          {/* Roadmap tools – coming soon */}
           <ToolCard
-            title="HTTP Security Header Checker"
-            description="Inspect HTTP response headers for missing or unsafe security directives."
+            title="Cloud Misconfiguration Scanner"
+            description="Upload cloud configuration exports (AWS/Azure/GCP) to flag dangerous defaults and misconfigurations in IAM, networking, and storage."
             status="coming-soon"
           />
           <ToolCard
-            title="Subdomain & DNS Surface Explorer"
-            description="Discover and map subdomains to understand your external attack surface."
+            title="Threat Simulation Playground"
+            description="Explore simulated attack scenarios with synthetic logs, detections, and MITRE ATT&CK mappings in an interactive UI."
             status="coming-soon"
           />
           <ToolCard
-            title="Kubernetes Manifest Linter"
-            description="Check Kubernetes YAML manifests for common security misconfigurations."
+            title="Website Risk Reporter"
+            description="Analyze domains for TLS issues, HTTP security headers, cookie flags, and tech stack exposure with a clean visual report."
+            status="coming-soon"
+          />
+          <ToolCard
+            title="Mini SIEM WebApp"
+            description="Upload logs, apply detection rules, and review alerts in a lightweight browser-based SIEM-style interface."
+            status="coming-soon"
+          />
+          <ToolCard
+            title="Cyber Hygiene Planner"
+            description="Answer a short questionnaire and get a prioritized security roadmap tailored for small teams or projects."
+            status="coming-soon"
+          />
+          <ToolCard
+            title="Network Exposure Map"
+            description="Import Nmap or scan output to visualize hosts, open ports, and potential attack paths on an interactive graph."
             status="coming-soon"
           />
         </div>
