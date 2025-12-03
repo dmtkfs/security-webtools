@@ -31,6 +31,21 @@ Analyze any Dockerfile for common security flaws and hardening issues.
 - Clean UI with scrollable findings panel
 - Runs fully in-browser
 
+### **2. Local Network Exposure Map (v0.2)**
+Visualize Nmap XML or generic JSON scan results to see exposed hosts, risky services, and subnet-level clusters.
+
+**Features:**
+- Parses Nmap XML output (-oX) and generic JSON ({ hosts: [...] })
+- Assigns Low / Medium / High risk per host with explanatory risk notes
+- Detects high-risk services (RDP, SMB, SSH, MySQL, VNC, HTTP, etc.)
+- Host view: cards with open ports, services and risk badges
+- Subnet view: /24 cluster map with color-coded host dots
+- Filters: search by IP/hostname, only-up hosts, high+medium only
+- Shows top exposed services in the current view
+- Lets you add custom high-risk ports/services (stored in LocalStorage)
+- Export current view as JSON, Markdown, CSV or copy a Markdown report
+- All parsing and analysis runs fully in-browser
+
 ## Upcoming Tools & Roadmap
 
 Security Webtools will expand into a full suite of privacy-first analysis utilities:
@@ -42,7 +57,6 @@ Security Webtools will expand into a full suite of privacy-first analysis utilit
 - Mini SIEM (Log parsing + detection rules + alerting)
 - Cyber Hygiene Planner (automated security roadmap)
 - Docker Image Security Analyzer (extended version)
-- Network Exposure Map (Nmap / JSON visual graph)
 
 *These will be rolled out incrementally.*
 
