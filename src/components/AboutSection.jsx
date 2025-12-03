@@ -8,8 +8,7 @@ function AboutSection() {
       </h2>
       <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
         Security Webtools is a collection of browser-based security utilities.
-        All analysis is performed locally in your browser. Dockerfiles and any
-        other inputs never leave your device, and no data is sent to any
+        All analysis is performed locally in your browser. Any uploads and inputs never leave your device, and no data is sent to any
         external server or third-party API.
       </p>
     </section>

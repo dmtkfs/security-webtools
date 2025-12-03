@@ -49,9 +49,10 @@ function Home({ onSelectTool }) {
             status="coming-soon"
           />
           <ToolCard
-            title="Network Exposure Map"
-            description="Import Nmap or scan output to visualize hosts, open ports, and potential attack paths on an interactive graph."
-            status="coming-soon"
+            title="Local Network Exposure Map"
+            description="Import Nmap XML or generic JSON scan results to visualize hosts, open ports, and basic exposure risk in a clean grid view."
+            status="available"
+            onClick={() => onSelectTool('network-exposure-map')}
           />
         </div>
       </section>
