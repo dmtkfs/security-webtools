@@ -38,7 +38,7 @@ function Layout({ children, activeToolName, onHomeClick }) {
           </div>
 
           <span className="text-[0.65rem] text-slate-500">
-            v0.1 · Frontend-only
+            v0.2 · Frontend-only
           </span>
         </div>
       </header>
