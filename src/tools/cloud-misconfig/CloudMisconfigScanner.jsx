@@ -440,7 +440,9 @@ function CloudMisconfigScanner({ onBack }) {
     return (
       <span className={classes}>
         {label}:{' '}
-        <span className="font-mono ml-1 text-[0.63rem]">
+        <span
+          className="font-mono ml-1 text-[0.63rem] leading-none translate-y-[0.5px]"
+        >
           {finding.resourceId}
         </span>
       </span>
