@@ -1,5 +1,3 @@
-// src/tools/cloud-misconfig/multiCloudEngine.js
-
 import {
   analyzeConfig as analyzeAwsConfig,
   exampleConfig as awsExampleConfig,
@@ -36,7 +34,7 @@ export function detectPlatform(config) {
       ? config.metadata
       : null
 
-  // ---- 1) Explicit metadata.platform wins hard -----------------------------
+  // ---- 1) Explicit metadata.platform wins -----------------------------
 
   const metaPlatform =
     metadata && typeof metadata.platform === 'string'
@@ -210,7 +208,7 @@ export function detectPlatform(config) {
     }
   }
 
-  // If we genuinely have no signal, stay unknown.
+  // If no signal, unknown
   if (bestScore === 0) {
     return 'unknown'
   }
@@ -243,13 +241,11 @@ export function analyzeMultiCloudConfig(config) {
     }
   }
 
-  // GCP engine can be added here later.
+  // Another engine can be added here later.
   return {
     platform,
     findings: [],
   }
 }
 
-// For now, keep the sample as the AWS example.
-// (If you want, we can add a UI toggle to choose AWS vs Azure sample later.)
 export const exampleMultiCloudConfig = awsExampleConfig

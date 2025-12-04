@@ -1,5 +1,3 @@
-// src/tools/cloud-misconfig/awsRules.js
-
 const SEVERITY_ORDER = {
   high: 0,
   warning: 1,
@@ -19,8 +17,6 @@ function normalizeCidr(value) {
   return typeof value === 'string' ? value.trim().toLowerCase() : ''
 }
 
-// ------------------------ RULES ---------------------------------------------
-
 const RULES = [
   // 1) SG: 0.0.0.0/0 on sensitive ports (SSH, RDP, VNC, etc.)
   {
@@ -37,7 +33,6 @@ const RULES = [
         []
 
       const sgs = Array.isArray(rawSgs) ? rawSgs : []
-
 
       sgs.forEach((sg, sgIndex) => {
         const sgName = sg.name || sg.id || `sg-${sgIndex}`
@@ -307,7 +302,7 @@ const RULES = [
   },
 ]
 
-// Example config (you already have this; keep or tweak as needed)
+// Example config
 export const exampleConfig = {
   metadata: {
     platform: 'aws',

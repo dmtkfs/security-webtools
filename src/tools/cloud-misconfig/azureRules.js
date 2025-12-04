@@ -1,5 +1,3 @@
-// src/tools/cloud-misconfig/azureRules.js
-
 const SEVERITY_ORDER = {
   high: 0,
   warning: 1,

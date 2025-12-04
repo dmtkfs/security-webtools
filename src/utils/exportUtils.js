@@ -1,5 +1,3 @@
-// src/utils/exportUtils.js
-
 // Helper: download a text blob as a file (client-side only)
 export function downloadTextFile(filename, text) {
   try {

@@ -24,7 +24,6 @@ function safeParseJsonWithLocation(text) {
     let line = null
     let column = null
 
-    // Most engines: "Unexpected token ... in JSON at position 123"
     const match = message.match(/position\s+(\d+)/i)
     if (match) {
       const pos = Number(match[1])
@@ -60,7 +59,6 @@ function safeParseJsonWithLocation(text) {
 }
 
 function CloudMisconfigScanner({ onBack }) {
-  // Persisted state (rename keys to be cloud-generic)
   const [configText, setConfigText] = useLocalStorage(
     'sw_cloud_config_text',
     '',
@@ -78,11 +76,11 @@ function CloudMisconfigScanner({ onBack }) {
   const [error, setError] = useState(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [exportMessage, setExportMessage] = useState(null)
-  const [inputSource, setInputSource] = useState('manual') // 'manual' | 'file' | 'sample'
+  const [inputSource, setInputSource] = useState('manual')
   const [uploadedFileName, setUploadedFileName] = useState(null)
   const [showOnlyImportant, setShowOnlyImportant] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [detectedPlatform, setDetectedPlatform] = useState(null) // 'aws' | 'azure' | 'gcp' | 'unknown' | null
+  const [detectedPlatform, setDetectedPlatform] = useState(null)
 
   const fileInputRef = useRef(null)
 
@@ -251,79 +249,81 @@ function CloudMisconfigScanner({ onBack }) {
     }
   }
 
-    // ---------------------------------------------------------------------------
-    // Derived state: filters, summary, etc.
-    // ---------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------
+      // Derived state: filters, summary, etc.
+      // ---------------------------------------------------------------------------
 
-    const canExport = hasAnalyzed && totalShown > 0
-    const canReset =
-    configText.trim().length > 0 || findings.length > 0 || uploadedFileName
+      const severityFilteredFindings = showOnlyImportant
+        ? findings.filter(
+            (f) => f.severity === 'high' || f.severity === 'warning',
+          )
+        : findings
 
-    const severityFilteredFindings = showOnlyImportant
-    ? findings.filter(
-        (f) => f.severity === 'high' || f.severity === 'warning',
-        )
-    : findings
+      const searchLower = searchQuery.trim().toLowerCase()
+      const filteredFindings = searchLower
+        ? severityFilteredFindings.filter((f) => {
+            const haystack = [
+              f.title || '',
+              f.description || '',
+              f.resourceId || '',
+              f.resourceType || '',
+              f.ruleId || '',
+            ]
+              .join(' ')
+              .toLowerCase()
+            return haystack.includes(searchLower)
+          })
+        : severityFilteredFindings
 
-    const searchLower = searchQuery.trim().toLowerCase()
-    const filteredFindings = searchLower
-    ? severityFilteredFindings.filter((f) => {
-        const haystack = [
-            f.title || '',
-            f.description || '',
-            f.resourceId || '',
-            f.resourceType || '',
-            f.ruleId || '',
-        ]
-            .join(' ')
-            .toLowerCase()
-        return haystack.includes(searchLower)
-        })
-    : severityFilteredFindings
+      const severityCounts = filteredFindings.reduce(
+        (acc, f) => {
+          acc[f.severity] = (acc[f.severity] || 0) + 1
+          return acc
+        },
+        { high: 0, warning: 0, info: 0 },
+      )
 
-    const severityCounts = filteredFindings.reduce(
-    (acc, f) => {
-        acc[f.severity] = (acc[f.severity] || 0) + 1
-        return acc
-    },
-    { high: 0, warning: 0, info: 0 },
-    )
+      const totalShown = filteredFindings.length
+      const percent = (count) => (totalShown > 0 ? (count / totalShown) * 100 : 0)
 
-    const totalShown = filteredFindings.length
-    const percent = (count) => (totalShown > 0 ? (count / totalShown) * 100 : 0)
+      const resourceSets = {
+        'security-group': new Set(),
+        's3-bucket': new Set(),
+        'iam-policy': new Set(),
+      }
 
-    const resourceSets = {
-    'security-group': new Set(),
-    's3-bucket': new Set(),
-    'iam-policy': new Set(),
-    }
+      const CATEGORY_LABELS = {
+        network: 'Network / firewall',
+        storage: 'Storage / buckets',
+        iam: 'IAM / roles & policies',
+      }
 
-    const CATEGORY_LABELS = {
-    network: 'Network / firewall',
-    storage: 'Storage / buckets',
-    iam: 'IAM / roles & policies',
-    }
+      const categoryCounts = filteredFindings.reduce(
+        (acc, f) => {
+          if (f.category && acc[f.category] !== undefined) {
+            acc[f.category] += 1
+          }
+          return acc
+        },
+        { network: 0, storage: 0, iam: 0 },
+      )
 
-    const categoryCounts = filteredFindings.reduce(
-    (acc, f) => {
-        if (f.category && acc[f.category] !== undefined) {
-        acc[f.category] += 1
+      filteredFindings.forEach((f) => {
+        if (f.resourceType && f.resourceId && resourceSets[f.resourceType]) {
+          resourceSets[f.resourceType].add(f.resourceId)
         }
-        return acc
-    },
-    { network: 0, storage: 0, iam: 0 },
-    )
+      })
 
-    filteredFindings.forEach((f) => {
-    if (f.resourceType && f.resourceId && resourceSets[f.resourceType]) {
-        resourceSets[f.resourceType].add(f.resourceId)
-    }
-    })
+      const summarySecurityGroups = resourceSets['security-group'].size
+      const summaryS3Buckets = resourceSets['s3-bucket'].size
+      const summaryIamPolicies = resourceSets['iam-policy'].size
 
-    const summarySecurityGroups = resourceSets['security-group'].size
-    const summaryS3Buckets = resourceSets['s3-bucket'].size
-    const summaryIamPolicies = resourceSets['iam-policy'].size
-    const exportFindings = filteredFindings
+      const exportFindings = filteredFindings
+
+      const canExport = hasAnalyzed && exportFindings.length > 0
+      const canReset =
+        configText.trim().length > 0 || findings.length > 0 || uploadedFileName
+
 
     // ---------------------------------------------------------------------------
     // Export handlers

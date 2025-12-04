@@ -1,5 +1,3 @@
-// src/tools/cloud-misconfig/gcpRules.js
-
 const SEVERITY_ORDER = {
   high: 0,
   warning: 1,
@@ -44,8 +42,6 @@ function parsePortRange(token) {
 
   return null
 }
-
-// ------------------------ RULES ---------------------------------------------
 
 const RULES = [
   // 1) Firewall: sensitive ports from public ranges
