@@ -3,7 +3,7 @@
 
 > *Security Webtools is a growing collection of **browser-based security utilities** designed for developers, DevOps engineers and defenders.*
 > *All tools run **100% locally in your browser**. No servers, no uploads, no telemetry. Sensitive inputs never leave your machine.*
-> *This suite aims to make common security checks **fast, private, and easy**, directly in your browser.*
+> *This suite aims to make common security checks **fast, private and easy**, directly in your browser.*
 
 ## Why local-first?
 Most online “security scanners” require you to upload configuration files, secrets or application metadata. Security Webtools avoids this entirely:
@@ -32,7 +32,7 @@ Analyze any Dockerfile for common security flaws and hardening issues.
 - Runs fully in-browser
 
 ### **2. Local Network Exposure Map (v0.2)**
-Visualize Nmap XML or generic JSON scan results to see exposed hosts, risky services, and subnet-level clusters.
+Visualize Nmap XML or generic JSON scan results to see exposed hosts, risky services and subnet-level clusters.
 
 **Features:**
 - Parses Nmap XML output (-oX) and generic JSON ({ hosts: [...] })
@@ -46,12 +46,25 @@ Visualize Nmap XML or generic JSON scan results to see exposed hosts, risky serv
 - Export current view as JSON, Markdown, CSV or copy a Markdown report
 - All parsing and analysis runs fully in-browser
 
+### 3. **Cloud Misconfiguration Scanner (v0.3)**
+Analyze AWS, Azure, or GCP JSON exports for common network, storage and IAM misconfigurations locally in the browser.
+
+**Features:**
+- Automatically detects platform (AWS / Azure / GCP) from the JSON structure
+- Network checks: 0.0.0.0/0 on SSH/RDP/admin ports, broad “allow all ports” rules, Azure NSG Internet rules
+- Storage checks: public read/write buckets, encryption disabled, versioning disabled
+- IAM checks: wildcard actions/resources, public members (allUsers/allAuthenticatedUsers), highly-privileged roles
+- Severity filters (High / Warning / Info)
+- Search box to filter by title, description, resource, or rule id
+- Category chips and summary for network / storage / IAM issues
+- Export the current view as JSON or Markdown, or copy a Markdown report
+- All analysis is performed client-side on the provided file/text
+
 ## Upcoming Tools & Roadmap
 
 Security Webtools will expand into a full suite of privacy-first analysis utilities:
 
 ### **Planned tools:**
-- Cloud Misconfiguration Scanner
 - Threat Simulation Playground
 - Website Risk Reporter (TLS / Header / Tech-stack analyzer)
 - Mini SIEM (Log parsing + detection rules + alerting)
@@ -82,7 +95,7 @@ This project is licensed under the **Apache License 2.0**.
 Created and maintained by [`dmtkfs`](https://github.com/dmtkfs).
 Security researcher & engineer focused on practical, privacy-first tooling.
 
-*Feedback, ideas, and bug reports are welcome.*
+*Feedback, ideas and bug reports are welcome.*
 
 ## Support & Updates
 If you find this project interesting or useful, consider starring the repository. It helps with visibility and motivates further development.
