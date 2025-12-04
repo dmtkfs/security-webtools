@@ -25,7 +25,7 @@ function Home({ onSelectTool }) {
           {/* Roadmap tools – coming soon */}
           <ToolCard
             title="Cloud Misconfiguration Scanner"
-            description="Upload AWS JSON configuration to flag risky defaults and misconfigurations in security groups, S3, and IAM."
+            description="Upload AWS, Azure or GCP JSON exports to flag risky network, storage and IAM misconfigurations — all in your browser."
             status="available"
             onClick={() => onSelectTool('cloud-misconfig')}
           />
