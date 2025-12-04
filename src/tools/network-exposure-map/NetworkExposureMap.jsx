@@ -503,7 +503,7 @@ function NetworkExposureMap({ onBack }) {
           </h2>
           <p className="text-xs sm:text-sm text-slate-300">
             Import existing scan results (Nmap XML or generic JSON) to visualize
-            hosts, open ports, and exposure risk. All processed entirely in your
+            hosts, open ports and exposure risk. All processed entirely in your
             browser with no backend or external APIs.
           </p>
         </div>
@@ -636,7 +636,7 @@ function NetworkExposureMap({ onBack }) {
 
           {hosts.length === 0 && !error && (
             <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-300">
-              No hosts loaded yet. Upload a scan file, paste scan output, or use
+              No hosts loaded yet. Upload a scan file, paste scan output or use
               one of the sample scans to see the exposure map.
             </div>
           )}

@@ -17,12 +17,12 @@ function Home({ onSelectTool }) {
         <div className="grid gap-4 sm:grid-cols-2">
           <ToolCard
             title="Docker Image Security Analyzer"
-            description="Paste or upload a Dockerfile to detect common security and hardening issues: unsafe base images, risky ports, secrets, and more."
+            description="Paste or upload a Dockerfile to detect common security and hardening issues: unsafe base images, risky ports, secrets and more."
             status="available"
             onClick={() => onSelectTool('docker-analyzer')}
           />
 
-          {/* Roadmap tools – coming soon */}
+          {/* Roadmap tools - coming soon */}
           <ToolCard
             title="Cloud Misconfiguration Scanner"
             description="Upload AWS, Azure or GCP JSON exports to flag risky network, storage and IAM misconfigurations — all in your browser."
@@ -31,17 +31,17 @@ function Home({ onSelectTool }) {
           />
           <ToolCard
             title="Threat Simulation Playground"
-            description="Explore simulated attack scenarios with synthetic logs, detections, and MITRE ATT&CK mappings in an interactive UI."
+            description="Explore simulated attack scenarios with synthetic logs, detections and MITRE ATT&CK mappings in an interactive UI."
             status="coming-soon"
           />
           <ToolCard
             title="Website Risk Reporter"
-            description="Analyze domains for TLS issues, HTTP security headers, cookie flags, and tech stack exposure with a clean visual report."
+            description="Analyze domains for TLS issues, HTTP security headers, cookie flags and tech stack exposure with a clean visual report."
             status="coming-soon"
           />
           <ToolCard
             title="Mini SIEM WebApp"
-            description="Upload logs, apply detection rules, and review alerts in a lightweight browser-based SIEM-style interface."
+            description="Upload logs, apply detection rules and review alerts in a lightweight browser-based SIEM-style interface."
             status="coming-soon"
           />
           <ToolCard
@@ -51,7 +51,7 @@ function Home({ onSelectTool }) {
           />
           <ToolCard
             title="Local Network Exposure Map"
-            description="Import Nmap XML or generic JSON scan results to visualize hosts, open ports, and basic exposure risk in a clean grid view."
+            description="Import Nmap XML or generic JSON scan results to visualize hosts, open ports and basic exposure risk in a clean grid view."
             status="available"
             onClick={() => onSelectTool('network-exposure-map')}
           />

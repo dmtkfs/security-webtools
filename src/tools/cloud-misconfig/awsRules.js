@@ -73,7 +73,7 @@ const RULES = [
                 description:
                   `An inbound rule allows TCP port ${port} from 0.0.0.0/0, exposing this service to the internet.`,
                 recommendation:
-                  'Restrict this rule to known IP ranges, use a bastion host, or require VPN / private connectivity instead of exposing these ports publicly.',
+                  'Restrict this rule to known IP ranges, use a bastion host or require VPN / private connectivity instead of exposing these ports publicly.',
                 resourceType: 'security-group',
                 resourceId: sgName,
                 location: {
@@ -186,7 +186,7 @@ const RULES = [
             description:
               `Bucket "${name}" is configured with public read and public write access. Objects may be readable and modifiable by anyone on the internet.`,
             recommendation:
-              'Disable public read/write, enable S3 Block Public Access, and restrict access via IAM policies or bucket policies to specific principals.',
+              'Disable public read/write, enable S3 Block Public Access and restrict access via IAM policies or bucket policies to specific principals.',
             resourceType: 's3-bucket',
             resourceId: name,
             location: { path: `s3Buckets[${index}]` },

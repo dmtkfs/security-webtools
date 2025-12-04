@@ -200,7 +200,7 @@ const RULES = [
             description:
               `Bucket "${name}" is configured with public read and public write access. Objects may be readable and modifiable by anyone on the internet.`,
             recommendation:
-              'Disable public read/write and rely on IAM, ACLs, or signed URLs. Use organization policies to prevent public buckets where possible.',
+              'Disable public read/write and rely on IAM, ACLs or signed URLs. Use organization policies to prevent public buckets where possible.',
             resourceType: 's3-bucket',
             resourceId: name,
             location: { path: `storageBuckets[${index}]` },
@@ -230,7 +230,7 @@ const RULES = [
             description:
               `Bucket "${name}" allows public read access. Objects may be downloaded by anyone on the internet.`,
             recommendation:
-              'Ensure this is intended. Otherwise, disable public read and use controlled sharing via ACLs, IAM, or signed URLs.',
+              'Ensure this is intended. Otherwise, disable public read and use controlled sharing via ACLs, IAM or signed URLs.',
             resourceType: 's3-bucket',
             resourceId: name,
             location: { path: `storageBuckets[${index}]` },
@@ -319,7 +319,7 @@ const RULES = [
             description:
               `An IAM binding for role "${role}" includes allUsers or allAuthenticatedUsers, making the resource at scope "${scope}" publicly accessible.`,
             recommendation:
-              'Remove allUsers/allAuthenticatedUsers and restrict access to specific identities (service accounts, groups, or users).',
+              'Remove allUsers/allAuthenticatedUsers and restrict access to specific identities (service accounts, groups or users).',
             resourceType: 'iam-policy',
             resourceId: role || `binding-${index}`,
             location: { path: `iamBindings[${index}]` },
@@ -336,7 +336,7 @@ const RULES = [
             description:
               `IAM binding for scope "${scope}" grants a highly privileged role "${role}", which can manage most or all resources in that scope.`,
             recommendation:
-              'Use more granular roles (service- or resource-specific) instead of owner/editor/admin, and keep the number of such principals small.',
+              'Use more granular roles (service or resource-specific) instead of owner/editor/admin and keep the number of such principals small.',
             resourceType: 'iam-policy',
             resourceId: role || `binding-${index}`,
             location: { path: `iamBindings[${index}]` },

@@ -259,7 +259,7 @@ const RULES = [
               description:
                 `The Dockerfile exposes port ${portNumber}, which is commonly used for remote administrative services and may increase attack surface.`,
               recommendation:
-                'Avoid exposing administrative ports directly on containers unless strictly required. Consider using internal networking, bastion hosts, or VPNs.',
+                'Avoid exposing administrative ports directly on containers unless strictly required. Consider using internal networking, bastion hosts or VPNs.',
               lineNumber: index + 1,
               lineContent: rawLines[index],
             })
@@ -429,7 +429,7 @@ const RULES = [
             description:
               'The Dockerfile downloads a script with curl or wget and pipes it directly to a shell. This can be risky if the remote content changes or is compromised.',
             recommendation:
-              'Download scripts, verify integrity (checksums, signatures), and inspect them before execution instead of piping directly to a shell.',
+              'Download scripts, verify integrity (checksums, signatures) and inspect them before execution instead of piping directly to a shell.',
             lineNumber: index + 1,
             lineContent: rawLines[index],
           })
@@ -474,7 +474,7 @@ const RULES = [
           description:
             `The Dockerfile defines an ENV variable whose name suggests it may contain a secret or credential (matched keywords: ${keywordsList}).`,
           recommendation:
-            'Avoid baking secrets into images. Use a secrets manager or runtime environment injection (for example, orchestrator secrets) instead of ENV instructions.',
+            'Avoid baking secrets into images. Use a secrets manager or runtime environment injection (for example orchestrator secrets) instead of ENV instructions.',
           lineNumber: index + 1,
           lineContent: rawLines[index],
         })
@@ -559,7 +559,7 @@ const RULES = [
             description:
               'The Dockerfile defines a named build stage but never references it with COPY --from=. This may indicate dead code or an opportunity to simplify the multi-stage build.',
             recommendation:
-              'Remove unused build stages, or ensure that COPY --from=<stage> is used where appropriate.',
+              'Remove unused build stages or ensure that COPY --from=<stage> is used where appropriate.',
             lineNumber: stage.lineNumber,
             lineContent: stage.lineContent,
           })
@@ -678,7 +678,7 @@ const RULES = [
             description:
               'This Dockerfile defines multiple CMD instructions. Only the last CMD will take effect; earlier ones are overridden.',
             recommendation:
-              'Keep a single CMD in the final image, or consolidate behavior into one entry point script.',
+              'Keep a single CMD in the final image or consolidate behavior into one entry point script.',
             lineNumber: entry.lineNumber,
             lineContent: entry.lineContent,
           })
@@ -696,7 +696,7 @@ const RULES = [
             description:
               'This Dockerfile defines multiple ENTRYPOINT instructions. Only the last ENTRYPOINT will take effect; earlier ones are overridden.',
             recommendation:
-              'Keep a single ENTRYPOINT in the final image, or handle branching behavior inside that entry point script.',
+              'Keep a single ENTRYPOINT in the final image or handle branching behavior inside that entry point script.',
             lineNumber: entry.lineNumber,
             lineContent: entry.lineContent,
           })

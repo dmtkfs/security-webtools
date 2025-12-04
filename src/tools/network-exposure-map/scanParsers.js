@@ -28,14 +28,14 @@ export const PORT_RISK_HINTS = {
     summary:
       'SSH is a remote administration protocol. Exposing it broadly increases brute-force and key-theft risk.',
     remediation:
-      'Restrict SSH to admin subnets/VPN, use key-based auth, disable password logins, and consider fail2ban or equivalent.',
+      'Restrict SSH to admin subnets/VPN, use key-based auth, disable password logins and consider fail2ban or equivalent.',
   },
   ssh: {
     title: 'SSH service detected',
     summary:
       'SSH is commonly targeted for credential stuffing and key abuse when exposed to wide networks or the internet.',
     remediation:
-      'Limit exposure, enforce strong auth (keys + MFA where possible), and monitor for suspicious login attempts.',
+      'Limit exposure, enforce strong auth (keys + MFA where possible) and monitor for suspicious login attempts.',
   },
 
   // --- RDP ---
@@ -44,7 +44,7 @@ export const PORT_RISK_HINTS = {
     summary:
       'RDP is a prime target for ransomware operators and credential attacks when reachable from untrusted networks.',
     remediation:
-      'Avoid exposing RDP directly. Put it behind VPN or a jump host, require MFA, and monitor failed logins.',
+      'Avoid exposing RDP directly. Put it behind VPN or a jump host, require MFA and monitor failed logins.',
   },
   rdp: {
     title: 'RDP service detected',
@@ -60,21 +60,21 @@ export const PORT_RISK_HINTS = {
     summary:
       'SMB has a long history of critical bugs (like EternalBlue) and is a common lateral-movement channel.',
     remediation:
-      'Limit SMB exposure to internal segments, disable legacy protocols, and tightly control shares and permissions.',
+      'Limit SMB exposure to internal segments, disable legacy protocols and tightly control shares and permissions.',
   },
   smb: {
     title: 'SMB service detected',
     summary:
       'Open SMB can leak file shares and be abused for credential relay or malware spreading.',
     remediation:
-      'Segment file servers, restrict who can reach them, and monitor for unusual file access patterns.',
+      'Segment file servers, restrict who can reach them and monitor for unusual file access patterns.',
   },
 
   // --- Databases ---
   1433: {
     title: 'MSSQL database port exposed',
     summary:
-      'Directly exposed database ports increase the chance of brute-force, injection, and exploit attempts.',
+      'Directly exposed database ports increase the chance of brute-force, injection and exploit attempts.',
     remediation:
       'Place databases on internal-only segments and expose them via app tiers or bastion hosts rather than directly.',
   },
@@ -83,7 +83,7 @@ export const PORT_RISK_HINTS = {
     summary:
       'Databases rarely need broad network exposure; compromise often leads to large data exfiltration.',
     remediation:
-      'Restrict who can reach this DB, enforce strong auth, and use TLS plus least privilege for DB accounts.',
+      'Restrict who can reach this DB, enforce strong auth and use TLS plus least privilege for DB accounts.',
   },
 
   // --- VNC / remote consoles ---
@@ -92,14 +92,14 @@ export const PORT_RISK_HINTS = {
     summary:
       'VNC often has weak or missing encryption and is frequently left with guessable passwords.',
     remediation:
-      'Avoid exposing VNC directly; tunnel it over SSH/VPN, enforce strong credentials, or replace with more secure tooling.',
+      'Avoid exposing VNC directly; tunnel it over SSH/VPN, enforce strong credentials or replace with more secure tooling.',
   },
   vnc: {
     title: 'VNC service detected',
     summary:
       'VNC endpoints are easy to brute-force and sometimes lack proper access controls.',
     remediation:
-      'Lock down reachability, harden credentials, or migrate to a more secure remote access solution.',
+      'Lock down reachability, harden credentials or migrate to a more secure remote access solution.',
   },
 
   // --- HTTP / generic web ---
@@ -108,7 +108,7 @@ export const PORT_RISK_HINTS = {
     summary:
       'Plain HTTP leaks credentials and session data in transit and is easy to intercept on hostile networks.',
     remediation:
-      'Prefer HTTPS with modern TLS, redirect HTTP to HTTPS, and disable legacy ciphers and protocols.',
+      'Prefer HTTPS with modern TLS, redirect HTTP to HTTPS and disable legacy ciphers and protocols.',
   },
   8080: {
     title: 'Alternate HTTP port exposed',
@@ -120,9 +120,9 @@ export const PORT_RISK_HINTS = {
   http: {
     title: 'HTTP service detected',
     summary:
-      'Web services are a primary attack surface for injection, auth bypass, and deserialization bugs.',
+      'Web services are a primary attack surface for injection, auth bypass and deserialization bugs.',
     remediation:
-      'Review the app behind this service, apply patches, enable HTTPS, and run regular web security testing.',
+      'Review the app behind this service, apply patches, enable HTTPS and run regular web security testing.',
   },
 }
 
@@ -288,8 +288,8 @@ function assessRisk(ports) {
       riskLevel: 'high',
       riskReasons: [
         `High-risk services or ports exposed: ${labels.join(', ')}.`,
-        'These services are frequently targeted for remote access, brute-force attempts, and lateral movement.',
-        'Consider restricting exposure (firewalling, VPN access only, or internal-only access).',
+        'These services are frequently targeted for remote access, brute-force attempts and lateral movement.',
+        'Consider restricting exposure (firewalling, VPN access only or internal-only access).',
       ],
     }
   }
@@ -297,7 +297,7 @@ function assessRisk(ports) {
   return {
     riskLevel: 'medium',
     riskReasons: [
-      'Open ports detected – verify that each service is required and hardened.',
+      'Open ports detected - verify that each service is required and hardened.',
       'Ensure access is restricted to trusted networks and strong authentication is enforced.',
     ],
   }
@@ -315,7 +315,7 @@ export function parseNmapXml(xmlString) {
 
   const parserError = xmlDoc.getElementsByTagName('parsererror')[0]
   if (parserError) {
-    throw new Error('Invalid XML – unable to parse scan file')
+    throw new Error('Invalid XML - unable to parse scan file')
   }
 
   const hostNodes = Array.from(xmlDoc.getElementsByTagName('host'))
@@ -388,7 +388,7 @@ export function parseGenericJson(jsonString) {
   try {
     data = JSON.parse(jsonString)
   } catch {
-    throw new Error('Invalid JSON – unable to parse scan file')
+    throw new Error('Invalid JSON - unable to parse scan file')
   }
 
   // Accept either { hosts: [...] } or [...] directly
@@ -404,16 +404,16 @@ export function parseGenericJson(jsonString) {
 
     const ports = Array.isArray(host.ports)
       ? host.ports
-          .map((p) => ({
-            port:
-              typeof p.port === 'number'
-                ? p.port
-                : parseInt(p.port || '0', 10),
-            protocol: p.protocol || 'tcp',
-            state: p.state || 'open',
-            service: p.service || null,
-          }))
-          .filter((p) => p.state === 'open')
+        .map((p) => ({
+          port:
+            typeof p.port === 'number'
+              ? p.port
+              : parseInt(p.port || '0', 10),
+          protocol: p.protocol || 'tcp',
+          state: p.state || 'open',
+          service: p.service || null,
+        }))
+        .filter((p) => p.state === 'open')
       : []
 
     const { riskLevel, riskReasons } = assessRisk(ports)

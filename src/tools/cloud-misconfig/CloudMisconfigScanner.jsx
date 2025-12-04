@@ -470,12 +470,12 @@ function CloudMisconfigScanner({ onBack }) {
           </h2>
           <p className="text-xs sm:text-sm text-slate-300">
             Upload a static JSON configuration for security groups / firewall rules,
-            storage buckets, and IAM or role policies, and detect common
+            storage buckets and IAM or role policies, and detect common
             misconfigurations - all in your browser.
           </p>
             {hasAnalyzed && (!detectedPlatform || detectedPlatform === 'unknown') && (
             <p className="mt-1 text-[0.65rem] text-slate-400">
-                Couldn&apos;t confidently match this config to AWS, Azure, or GCP. That&apos;s OK –
+                Couldn&apos;t confidently match this config to AWS, Azure or GCP. That&apos;s ok,
                 rules still run as long as the top-level keys match the schema.
             </p>
             )}
@@ -642,7 +642,7 @@ function CloudMisconfigScanner({ onBack }) {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Filter by title, description, resource, or rule id…"
+                placeholder="Filter by title, description, resource or rule id…"
                 className="w-full text-[0.7rem] bg-slate-950/80 border border-slate-800 rounded-full px-3 py-1.5 outline-none focus:border-emerald-400/80 focus:ring-1 focus:ring-emerald-400/60"
               />
             </div>
@@ -832,7 +832,7 @@ function CloudMisconfigScanner({ onBack }) {
         </h3>
         <ul className="list-disc list-inside text-[0.7rem] text-slate-300 space-y-0.5">
           <li>Avoid 0.0.0.0/0 on administrative ports like 22 and 3389.</li>
-          <li>Limit management access to jump hosts, VPNs, or private networks.</li>
+          <li>Limit management access to jump hosts, VPNs or private networks.</li>
           <li>
             Use storage &quot;block public access&quot; features and bucket/container policies to prevent
             public data exposure.

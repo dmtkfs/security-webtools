@@ -73,7 +73,7 @@ const RULES = [
                 description:
                   `An inbound NSG rule allows TCP ${port} from Internet/Any, exposing this service to the public internet.`,
                 recommendation:
-                  'Restrict this rule to specific source IP ranges or private networks, or route administrative access through VPNs / jump hosts instead.',
+                  'Restrict this rule to specific source IP ranges or private networks or route administrative access through VPNs / jump hosts instead.',
                 resourceType: 'security-group',
                 resourceId: nsgName,
                 location: {
@@ -187,7 +187,7 @@ const RULES = [
             description:
               `Storage account "${name}" is configured with public read and write access. Attackers could read and modify data.`,
             recommendation:
-              'Disable public access, use private endpoints or SAS tokens, and restrict access via IAM / RBAC roles.',
+              'Disable public access, use private endpoints or SAS tokens and restrict access via IAM / RBAC roles.',
             resourceType: 's3-bucket',
             resourceId: name,
             location: { path: `storageAccounts[${index}]` },
@@ -202,7 +202,7 @@ const RULES = [
             description:
               `Storage account "${name}" allows public write access. Attackers could upload or overwrite blobs or files.`,
             recommendation:
-              'Disable public write, and require authenticated principals or shared access signatures for writes.',
+              'Disable public write and require authenticated principals or shared access signatures for writes.',
             resourceType: 's3-bucket',
             resourceId: name,
             location: { path: `storageAccounts[${index}]` },
