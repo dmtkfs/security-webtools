@@ -9,7 +9,7 @@ import CloudMisconfigScanner from './tools/cloud-misconfig/CloudMisconfigScanner
 const TOOL_LABELS = {
   'docker-analyzer': 'Docker Image Security Analyzer',
   'network-exposure-map': 'Local Network Exposure Map',
-  'cloud-misconfig': 'Cloud Misconfiguration Scanner (AWS)',
+  'cloud-misconfig': 'Cloud Misconfiguration Scanner',
 }
 
 
