@@ -4,10 +4,12 @@ import Home from './pages/Home.jsx'
 import DockerAnalyzer from './tools/docker-analyzer/DockerAnalyzer.jsx'
 import NetworkExposureMap from './tools/network-exposure-map/NetworkExposureMap.jsx'
 import { useLocalStorage } from './hooks/useLocalStorage.js'
+import CloudMisconfigScanner from './tools/cloud-misconfig/CloudMisconfigScanner.jsx'
 
 const TOOL_LABELS = {
   'docker-analyzer': 'Docker Image Security Analyzer',
   'network-exposure-map': 'Local Network Exposure Map',
+  'cloud-misconfig': 'Cloud Misconfiguration Scanner (AWS)',
 }
 
 
@@ -28,10 +30,11 @@ function App() {
     content = <DockerAnalyzer onBack={handleBackToHome} />
   } else if (activeTool === 'network-exposure-map') {
     content = <NetworkExposureMap onBack={handleBackToHome} />
+  } else if (activeTool === 'cloud-misconfig') {
+    content = <CloudMisconfigScanner onBack={handleBackToHome} />
   } else {
     content = <Home onSelectTool={handleSelectTool} />
   }
-
 
   const activeToolName = activeTool ? TOOL_LABELS[activeTool] : null
 
