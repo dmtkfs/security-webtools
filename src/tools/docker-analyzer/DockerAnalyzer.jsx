@@ -1,23 +1,33 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { analyzeDockerfile } from './dockerRules.js'
 import AboutSection from '../../components/AboutSection.jsx'
-import { useLocalStorage } from '../../hooks/useLocalStorage.js'
+import { getTemp, setTemp } from '../../utils/storage.js'
 import { downloadTextFile, findingsToMarkdown } from '../../utils/exportUtils.js'
 
 function DockerAnalyzer({ onBack }) {
-  // Persisted state
-  const [dockerfileText, setDockerfileText] = useLocalStorage(
-    'sw_docker_text',
-    '',
+  // Persisted state (temp storage with TTL)
+  const [dockerfileText, setDockerfileText] = useState(() =>
+    getTemp('sw_docker_text', ''),
   )
-  const [findings, setFindings] = useLocalStorage(
-    'sw_docker_findings',
-    [],
+  const [findings, setFindings] = useState(() =>
+    getTemp('sw_docker_findings', []),
   )
-  const [hasAnalyzed, setHasAnalyzed] = useLocalStorage(
-    'sw_docker_hasAnalyzed',
-    false,
+  const [hasAnalyzed, setHasAnalyzed] = useState(() =>
+    getTemp('sw_docker_hasAnalyzed', false),
   )
+
+  // Sync to temp storage
+  useEffect(() => {
+    setTemp('sw_docker_text', dockerfileText)
+  }, [dockerfileText])
+
+  useEffect(() => {
+    setTemp('sw_docker_findings', findings)
+  }, [findings])
+
+  useEffect(() => {
+    setTemp('sw_docker_hasAnalyzed', hasAnalyzed)
+  }, [hasAnalyzed])
 
   // Ephemeral UI state
   const [error, setError] = useState(null)

@@ -1,6 +1,4 @@
-// src/tools/network-exposure-map/NetworkExposureMap.jsx
-
-import React, { useState, useMemo, useRef } from 'react'
+import React, { useState, useMemo, useRef, useEffect } from 'react'
 import {
   parseScanFile,
   SAMPLE_SCAN_XML,
@@ -12,7 +10,7 @@ import {
 } from './scanParsers.js'
 import AboutSection from '../../components/AboutSection.jsx'
 import { downloadTextFile } from '../../utils/exportUtils.js'
-import { useLocalStorage } from '../../hooks/useLocalStorage.js'
+import {getTemp, setTemp, getPersistent, setPersistent } from '../../utils/storage.js'
 
 function riskBadgeClasses(level) {
   switch (level) {
@@ -170,44 +168,70 @@ function hostsToCsvReport(hosts) {
 }
 
 function NetworkExposureMap({ onBack }) {
-  const [hosts, setHosts] = useLocalStorage('sw_netmap_hosts', [])
+  const [hosts, setHosts] = useState(() => 
+    getTemp('sw_netmap_hosts', []),
+  )
   const [error, setError] = useState(null)
   const [lastSource, setLastSource] = useState(null)
-  const [manualInput, setManualInput] = useLocalStorage(
-    'sw_netmap_manual',
-    '',
+  const [manualInput, setManualInput] = useState(() =>
+    getTemp('sw_netmap_manual', ''),
   )
-  const [showOnlyElevated, setShowOnlyElevated] = useLocalStorage(
-    'sw_netmap_showElevated',
-    false,
+  const [showOnlyElevated, setShowOnlyElevated] = useState(() =>
+    getPersistent('sw_netmap_showElevated', false),
   )
   const [exportMessage, setExportMessage] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
-  const [onlyUpHosts, setOnlyUpHosts] = useLocalStorage(
-    'sw_netmap_onlyUp',
-    false,
+  const [onlyUpHosts, setOnlyUpHosts] = useState(() =>
+    getPersistent('sw_netmap_onlyUp', false),
   )
-  const [viewMode, setViewMode] = useLocalStorage(
-    'sw_netmap_viewMode',
-    'hosts',
+  const [viewMode, setViewMode] = useState(() =>
+    getPersistent('sw_netmap_viewMode', 'hosts'),
   )
 
   // Host detail side panel
   const [selectedHost, setSelectedHost] = useState(null)
 
   // Custom high-risk markers (UI-only, persisted locally)
-  const [userHighRiskPorts, setUserHighRiskPorts] = useLocalStorage(
-    'sw_netmap_custom_ports',
-    [],
+  const [userHighRiskPorts, setUserHighRiskPorts] = useState(() =>
+    getPersistent('sw_netmap_custom_ports', []),
   )
-  const [userHighRiskServices, setUserHighRiskServices] = useLocalStorage(
-    'sw_netmap_custom_services',
-    [],
+  const [userHighRiskServices, setUserHighRiskServices] = useState(() =>
+    getPersistent('sw_netmap_custom_services', []),
   )
   const [newHighPort, setNewHighPort] = useState('')
   const [newHighService, setNewHighService] = useState('')
 
   const fileInputRef = useRef(null)
+
+  // Sync temp state to storage
+  useEffect(() => {
+    setTemp('sw_netmap_hosts', hosts)
+  }, [hosts])
+
+  useEffect(() => {
+    setTemp('sw_netmap_manual', manualInput)
+  }, [manualInput])
+
+  // Sync persistent prefs to storage
+  useEffect(() => {
+    setPersistent('sw_netmap_showElevated', showOnlyElevated)
+  }, [showOnlyElevated])
+
+  useEffect(() => {
+    setPersistent('sw_netmap_onlyUp', onlyUpHosts)
+  }, [onlyUpHosts])
+
+  useEffect(() => {
+    setPersistent('sw_netmap_viewMode', viewMode)
+  }, [viewMode])
+
+  useEffect(() => {
+    setPersistent('sw_netmap_custom_ports', userHighRiskPorts)
+  }, [userHighRiskPorts])
+
+  useEffect(() => {
+    setPersistent('sw_netmap_custom_services', userHighRiskServices)
+  }, [userHighRiskServices])
 
   // Helper: custom high-risk logic (adds on top of built-in)
   const isCustomHighRisk = (port) => {

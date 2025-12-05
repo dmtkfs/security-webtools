@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import Layout from './components/Layout.jsx'
 import Home from './pages/Home.jsx'
 import DockerAnalyzer from './tools/docker-analyzer/DockerAnalyzer.jsx'
 import NetworkExposureMap from './tools/network-exposure-map/NetworkExposureMap.jsx'
-import { useLocalStorage } from './hooks/useLocalStorage.js'
 import CloudMisconfigScanner from './tools/cloud-misconfig/CloudMisconfigScanner.jsx'
+import { cleanupTemp, getPersistent, setPersistent } from "./utils/storage";
 
 const TOOL_LABELS = {
   'docker-analyzer': 'Docker Image Security Analyzer',
@@ -14,7 +14,17 @@ const TOOL_LABELS = {
 
 
 function App() {
-  const [activeTool, setActiveTool] = useLocalStorage('sw_active_tool', null)
+    useEffect(() => {
+    cleanupTemp();
+  }, []);
+  
+  const [activeTool, setActiveTool] = useState(() =>
+    getPersistent('sw_active_tool', null),
+  )
+
+  useEffect(() => {
+    setPersistent('sw_active_tool', activeTool)
+  }, [activeTool])
 
   const handleSelectTool = (toolId) => {
     setActiveTool(toolId)

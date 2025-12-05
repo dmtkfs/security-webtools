@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import AboutSection from '../../components/AboutSection.jsx'
-import { useLocalStorage } from '../../hooks/useLocalStorage.js'
+import { getTemp, setTemp } from '../../utils/storage.js'
 import { downloadTextFile, findingsToMarkdown } from '../../utils/exportUtils.js'
 import {
   analyzeMultiCloudConfig,
@@ -59,18 +59,29 @@ function safeParseJsonWithLocation(text) {
 }
 
 function CloudMisconfigScanner({ onBack }) {
-  const [configText, setConfigText] = useLocalStorage(
-    'sw_cloud_config_text',
-    '',
+  const [configText, setConfigText] = useState(() =>
+    getTemp('sw_cloud_config_text', ''),
   )
-  const [findings, setFindings] = useLocalStorage(
-    'sw_cloud_findings',
-    [],
+  const [findings, setFindings] = useState(() =>
+    getTemp('sw_cloud_findings', []),
   )
-  const [hasAnalyzed, setHasAnalyzed] = useLocalStorage(
-    'sw_cloud_hasAnalyzed',
-    false,
+  const [hasAnalyzed, setHasAnalyzed] = useState(() =>
+    getTemp('sw_cloud_hasAnalyzed', false),
   )
+
+  // Sync to temp storage (TTL-limited)
+  useEffect(() => {
+    setTemp('sw_cloud_config_text', configText)
+  }, [configText])
+
+  useEffect(() => {
+    setTemp('sw_cloud_findings', findings)
+  }, [findings])
+
+  useEffect(() => {
+    setTemp('sw_cloud_hasAnalyzed', hasAnalyzed)
+  }, [hasAnalyzed])
+
 
   // Ephemeral UI state
   const [error, setError] = useState(null)
