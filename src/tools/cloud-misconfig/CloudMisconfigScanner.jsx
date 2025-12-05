@@ -490,7 +490,15 @@ function CloudMisconfigScanner({ onBack }) {
             storage buckets and IAM or role policies, and detect common
             misconfigurations - all in your browser.
           </p>
-            {hasAnalyzed && (!detectedPlatform || detectedPlatform === 'unknown') && (
+            {hasAnalyzed && detectedPlatform && detectedPlatform !== 'unknown' && (
+              <p className="mt-1 text-[0.65rem] text-emerald-300">
+                Detected platform:{' '}
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-emerald-400 bg-emerald-500/10 text-emerald-100">
+                  {PLATFORM_LABELS[detectedPlatform] || 'Unknown'}
+                </span>
+              </p>
+            )}
+            {hasAnalyzed && detectedPlatform === 'unknown' && (
             <p className="mt-1 text-[0.65rem] text-slate-400">
                 Couldn&apos;t confidently match this config to AWS, Azure or GCP. That&apos;s ok,
                 rules still run as long as the top-level keys match the schema.
