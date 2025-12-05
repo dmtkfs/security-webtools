@@ -2,10 +2,132 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- og-card -->
+    <link rel="icon" type="image/svg+xml" href="/og-card.svg" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Security Webtools</title>
+
+    <!-- Basic SEO -->
+    <title>Security Webtools – Local-first browser security tools</title>
+    <meta
+      name="description"
+      content="Security Webtools is a collection of local-first browser security tools for developers and defenders. No servers, 100% privacy."
+    />
+
+    <!-- Canonical -->
+    <link
+      rel="canonical"
+      href="https://dmtkfs.github.io/security-webtools/"
+    />
+
+    <!-- OpenGraph (social preview) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Security Webtools" />
+    <meta
+      property="og:description"
+      content="Local-first browser security tools. Everything runs 100% on your machine."
+    />
+    <meta
+      property="og:image"
+      content="https://dmtkfs.github.io/security-webtools/og-card.svg"
+    />
+    <meta
+      property="og:url"
+      content="https://dmtkfs.github.io/security-webtools/"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Security Webtools" />
+    <meta
+      name="twitter:description"
+      content="Local-first browser security tools. No servers, no uploads."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dmtkfs.github.io/security-webtools/og-card.svg"
+    />
+
+    <meta name="theme-color" content="#020617" />
+
+    <!-- LD Block -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Security Webtools",
+      "url": "https://dmtkfs.github.io/security-webtools/",
+      "description": "Security tools for developers and defenders. Runs privately in your browser with no telemetry.",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires a modern web browser",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Security Webtools"
+      }
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://YOUR_URL/og-card.svg",
+        "width": "1200",
+        "height": "630"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Docker Image Security Analyzer",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Web",
+      "url": "https://dmtkfs.github.io/security-webtools/#docker-analyzer",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Analyze Docker images for insecure defaults and risky packages directly in your browser."
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Local Network Exposure Map",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Web",
+      "url": "https://dmtkfs.github.io/security-webtools/#network-exposure-map",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Visualize hosts and open ports from scan data. All processing runs locally in your browser."
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Cloud Misconfiguration Scanner",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Web",
+      "url": "https://dmtkfs.github.io/security-webtools/#cloud-misconfig",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Scan exported cloud configuration files for risky or unsafe settings using offline browser analysis."
+    }
+    </script>
+
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

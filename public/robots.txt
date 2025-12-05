@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dmtkfs.github.io/security-webtools/sitemap.xml

@@ -305,7 +305,7 @@ function DockerAnalyzer({ onBack }) {
             Docker Image Security Analyzer
           </h2>
           <p className="text-xs sm:text-sm text-slate-300">
-            Analyze a Dockerfile for common security and hardening issues directly in your browser.
+            Analyze a Dockerfile for security and hardening issues. Everything runs locally on your device.
           </p>
         </div>
       </div>

@@ -38,7 +38,7 @@ function Layout({ children, activeToolName, onHomeClick }) {
           </div>
 
           <span className="text-[0.65rem] text-slate-500">
-            v0.3 · Frontend-only
+            v0.3.5 · Frontend-only
           </span>
         </div>
       </header>
@@ -94,7 +94,7 @@ function Layout({ children, activeToolName, onHomeClick }) {
             </a>
           </div>
 
-          <span>No data leaves your device. All analysis is performed locally.</span>
+          <span>Your data stays on your device.</span>
         </div>
 </footer>
 

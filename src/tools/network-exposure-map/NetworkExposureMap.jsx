@@ -526,9 +526,8 @@ function NetworkExposureMap({ onBack }) {
             Local Network Exposure Map
           </h2>
           <p className="text-xs sm:text-sm text-slate-300">
-            Import existing scan results (Nmap XML or generic JSON) to visualize
-            hosts, open ports and exposure risk. All processed entirely in your
-            browser with no backend or external APIs.
+            Import Nmap or JSON scan results to visualize hosts and open ports. 
+            Parsing happens locally on your device.
           </p>
         </div>
       </div>

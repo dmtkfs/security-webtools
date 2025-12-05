@@ -1,0 +1,186 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1200"
+  height="630"
+  viewBox="0 0 1200 630"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Security Webtools</title>
+  <desc id="desc">Local-first security tools for developers and defenders.</desc>
+
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="40%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <radialGradient id="cornerGlow" cx="10%" cy="0%" r="70%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.35" />
+      <stop offset="40%" stop-color="#22c55e" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="sideGlow" cx="100%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.25" />
+      <stop offset="40%" stop-color="#0ea5e9" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)" />
+  <rect width="1200" height="630" fill="url(#cornerGlow)" />
+  <rect width="1200" height="630" fill="url(#sideGlow)" />
+
+  <!-- Title group -->
+  <g transform="translate(150 170)">
+    <!-- Logo square -->
+    <rect
+      x="0"
+      y="0"
+      width="76"
+      height="76"
+      rx="22"
+      fill="rgba(16,185,129,0.14)"
+      stroke="rgba(52,211,153,0.55)"
+      stroke-width="2"
+    />
+    <text
+      x="38"
+      y="47"
+      text-anchor="middle"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="30"
+      font-weight="600"
+      fill="#6ee7b7"
+    >
+      SW
+    </text>
+
+    <!-- Title -->
+    <text
+      x="104"
+      y="34"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="46"
+      font-weight="700"
+      fill="#e5e7eb"
+    >
+      Security Webtools
+    </text>
+
+    <!-- Subtitle -->
+    <text
+      x="104"
+      y="78"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="22"
+      fill="#9ca3af"
+    >
+      Local-first security tools for developers &amp; defenders
+    </text>
+  </g>
+
+  <!-- Tool info panel -->
+  <g transform="translate(820 190)">
+    <rect
+      x="0"
+      y="0"
+      width="310"
+      height="210"
+      rx="26"
+      fill="rgba(15,23,42,0.96)"
+      stroke="rgba(148,163,184,0.45)"
+      stroke-width="1.5"
+    />
+
+    <text
+      x="24"
+      y="40"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="16"
+      font-weight="600"
+      fill="#e5e7eb"
+    >
+      Runs in your browser
+    </text>
+
+    <text
+      x="24"
+      y="66"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="13"
+      fill="#9ca3af"
+    >
+      Offline by design. No telemetry.
+    </text>
+
+    <text
+      x="24"
+      y="104"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="14"
+      fill="#a7f3d0"
+    >
+      Docker image checks
+    </text>
+
+    <text
+      x="24"
+      y="132"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="14"
+      fill="#a7f3d0"
+    >
+      Local network exposure maps
+    </text>
+
+    <text
+      x="24"
+      y="160"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="14"
+      fill="#a7f3d0"
+    >
+      Cloud misconfiguration scans
+    </text>
+  </g>
+
+  <!-- Bottom section -->
+  <g transform="translate(150 380)">
+    <text
+      x="0"
+      y="36"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="22"
+      font-weight="500"
+      fill="#e5e7eb"
+    >
+      Private by default. Security focused.
+    </text>
+
+    <text
+      x="0"
+      y="64"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="16"
+      fill="#9ca3af"
+    >
+      Inspect Dockerfiles, network scan results and cloud configs without sending data away.
+    </text>
+  </g>
+
+  <!-- Signature -->
+  <text
+    x="1080"
+    y="480"
+    text-anchor="end"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    font-size="16"
+    fill="#6ee7b7"
+  >
+    security-webtools
+  </text>
+</svg>

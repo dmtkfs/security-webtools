@@ -501,9 +501,8 @@ function CloudMisconfigScanner({ onBack }) {
             Cloud Misconfiguration Scanner
           </h2>
           <p className="text-xs sm:text-sm text-slate-300">
-            Upload a static JSON configuration for security groups / firewall rules,
-            storage buckets and IAM or role policies, and detect common
-            misconfigurations - all in your browser.
+            Upload a cloud configuration export and detect common misconfigurations. 
+            Processing stays on your device.
           </p>
             {hasAnalyzed && detectedPlatform && detectedPlatform !== 'unknown' && (
               <p className="mt-1 text-[0.65rem] text-emerald-300">

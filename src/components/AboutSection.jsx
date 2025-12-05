@@ -7,9 +7,8 @@ function AboutSection() {
         About & Privacy
       </h2>
       <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-        Security Webtools is a collection of browser-based security utilities.
-        All analysis is performed locally in your browser. Any uploads and inputs never leave your device and no data is sent to any
-        external server or third-party API.
+        Security Webtools is a set of security utilities that run entirely on your device. 
+        Analysis happens locally in the browser and nothing you load or upload is sent to a server. Your data stays on your machine at all times.
       </p>
     </section>
   )
