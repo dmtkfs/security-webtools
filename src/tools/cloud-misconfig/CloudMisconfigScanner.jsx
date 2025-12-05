@@ -68,6 +68,9 @@ function CloudMisconfigScanner({ onBack }) {
   const [hasAnalyzed, setHasAnalyzed] = useState(() =>
     getTemp('sw_cloud_hasAnalyzed', false),
   )
+  const [detectedPlatform, setDetectedPlatform] = useState(() =>
+    getTemp('sw_cloud_detectedPlatform', null),
+  )
 
   // Sync to temp storage (TTL-limited)
   useEffect(() => {
@@ -86,7 +89,6 @@ function CloudMisconfigScanner({ onBack }) {
     setTemp('sw_cloud_detectedPlatform', detectedPlatform)
   }, [detectedPlatform])
 
-
   // Ephemeral UI state
   const [error, setError] = useState(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
@@ -95,9 +97,6 @@ function CloudMisconfigScanner({ onBack }) {
   const [uploadedFileName, setUploadedFileName] = useState(null)
   const [showOnlyImportant, setShowOnlyImportant] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [detectedPlatform, setDetectedPlatform] = useState(() =>
-    getTemp('sw_cloud_detectedPlatform', null),
-  )
 
   const fileInputRef = useRef(null)
 

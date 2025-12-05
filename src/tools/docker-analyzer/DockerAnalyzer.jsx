@@ -129,36 +129,38 @@ function DockerAnalyzer({ onBack }) {
     reader.readAsText(file)
   }
 
-  const handleAnalyze = () => {
-    setError(null)
-    setExportMessage(null)
-    setHasAnalyzed(true)
+    const handleAnalyze = () => {
+      setError(null)
+      setExportMessage(null)
 
-    if (!dockerfileText.trim()) {
-      setFindings([])
-      setError('Please paste a Dockerfile or upload a file before analyzing.')
-      return
-    }
+      if (!dockerfileText.trim()) {
+        setFindings([])
+        setHasAnalyzed(false)
+        setError('Please paste a Dockerfile or upload a file before analyzing.')
+        return
+      }
 
-    // Guard against absurdly huge pasted text (perf + localStorage safety)
-    const MAX_TEXT_LENGTH = 200_000 // ~200 KB of text
-    if (dockerfileText.length > MAX_TEXT_LENGTH) {
-      setFindings([])
-      setError('Input is too large. Please analyze a Dockerfile under ~200 KB of text.')
-      return
-    }
+      const MAX_TEXT_LENGTH = 200_000 // ~200 KB of text
+      if (dockerfileText.length > MAX_TEXT_LENGTH) {
+        setFindings([])
+        setHasAnalyzed(false)
+        setError('Input is too large. Please analyze a Dockerfile under ~200 KB of text.')
+        return
+      }
 
-    try {
-      setIsAnalyzing(true)
-      const results = analyzeDockerfile(dockerfileText)
-      setFindings(results)
-    } catch (err) {
-      console.error(err)
-      setError('An unexpected error occurred while analyzing the Dockerfile.')
-    } finally {
-      setIsAnalyzing(false)
+      try {
+        setIsAnalyzing(true)
+        const results = analyzeDockerfile(dockerfileText)
+        setFindings(results)
+        setHasAnalyzed(true)        // ← only here, on success
+      } catch (err) {
+        console.error(err)
+        setError('An unexpected error occurred while analyzing the Dockerfile.')
+        setHasAnalyzed(false)
+      } finally {
+        setIsAnalyzing(false)
+      }
     }
-  }
 
     const handleJumpToLine = (lineNumber) => {
     if (!textareaRef.current || !dockerfileText) return
@@ -521,7 +523,7 @@ CMD ["bash"]`}
               </p>
             )}
 
-            {hasAnalyzed && findings.length === 0 && !error && (
+            {hasAnalyzed && findings.length === 0 && !error && dockerfileText.trim() && (
               <div className="text-xs text-emerald-200 bg-emerald-500/10 border border-emerald-500/30 rounded-xl px-3 py-2">
                 No high or warning-level issues detected based on the current rule set.
                 You should still review your Dockerfile against your organization&apos;s policies.
