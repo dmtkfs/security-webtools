@@ -35,6 +35,12 @@ function App() {
   // use hash-aware initial value
   const [activeTool, setActiveTool] = useState(getInitialTool);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  }, [activeTool]);
+
   // sync to storage + update hash
   useEffect(() => {
     setPersistent('sw_active_tool', activeTool);
