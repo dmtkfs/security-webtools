@@ -220,10 +220,14 @@ function CloudMisconfigScanner({ onBack }) {
   const handleAnalyze = () => {
     setError(null)
     setExportMessage(null)
-    setHasAnalyzed(true)
 
+    // Empty input
     if (!configText.trim()) {
       setFindings([])
+      setDetectedPlatform(null)
+      setHasAnalyzed(false)
+      setShowOnlyImportant(false)
+      setSearchQuery('')
       setError('Please paste JSON configuration or upload a file before analyzing.')
       return
     }
@@ -231,6 +235,10 @@ function CloudMisconfigScanner({ onBack }) {
     const MAX_TEXT_LENGTH = 300_000
     if (configText.length > MAX_TEXT_LENGTH) {
       setFindings([])
+      setDetectedPlatform(null)
+      setHasAnalyzed(false)
+      setShowOnlyImportant(false)
+      setSearchQuery('')
       setError('Input is too large. Please analyze a JSON file under ~300 KB of text.')
       return
     }
@@ -238,6 +246,11 @@ function CloudMisconfigScanner({ onBack }) {
     const parsedResult = safeParseJsonWithLocation(configText)
     if (!parsedResult.ok) {
       setFindings([])
+      setDetectedPlatform(null)
+      setHasAnalyzed(false)
+      setShowOnlyImportant(false)
+      setSearchQuery('')
+
       if (parsedResult.line != null && parsedResult.column != null) {
         setError(
           `${parsedResult.message} Approximate error location: line ${parsedResult.line}, column ${parsedResult.column}.`,
@@ -255,15 +268,18 @@ function CloudMisconfigScanner({ onBack }) {
       const { platform, findings: results } = analyzeMultiCloudConfig(parsed)
       setDetectedPlatform(platform)
       setFindings(results)
+      setHasAnalyzed(true)            // ← only here, on success
       setShowOnlyImportant(false)
       setSearchQuery('')
     } catch (err) {
       console.error(err)
       setError('An unexpected error occurred while analyzing the configuration.')
+      setHasAnalyzed(false)
     } finally {
       setIsAnalyzing(false)
     }
   }
+
 
       // ---------------------------------------------------------------------------
       // Derived state: filters, summary, etc.
@@ -740,7 +756,7 @@ function CloudMisconfigScanner({ onBack }) {
               </p>
             )}
 
-            {hasAnalyzed && findings.length === 0 && !error && (
+            {hasAnalyzed && findings.length === 0 && !error && configText.trim() && (
               <div className="text-xs text-emerald-200 bg-emerald-500/10 border border-emerald-500/30 rounded-xl px-3 py-2">
                 No high or warning-level issues detected based on the current rule set.
                 You should still review the configuration against your organization&apos;s
