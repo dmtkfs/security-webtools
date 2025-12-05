@@ -2,7 +2,9 @@
 
 ### Local-first security tools for developers & defenders
 
-> _Security Webtools is a growing collection of **browser-based security utilities** designed for developers, DevOps engineers and defenders._ > _All tools run **100% locally in your browser**. No servers, no uploads, no telemetry. Sensitive inputs never leave your machine._ > _This suite aims to make common security checks **fast, private and easy**, directly in your browser._
+> _Security Webtools is a growing collection of **browser-based security utilities** designed for developers, DevOps engineers and defenders.
+> All tools run **100% locally in your browser**. No servers, no uploads, no telemetry. Sensitive inputs never leave your machine.
+> This suite aims to make common security checks **fast, private and easy**, directly in your browser._
 
 ## Why local-first?
 
