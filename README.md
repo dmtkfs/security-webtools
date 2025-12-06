@@ -68,13 +68,28 @@ Analyze AWS, Azure or GCP JSON exports for common network, storage and IAM misco
 - Export the current view as JSON or Markdown or copy a Markdown report
 - All analysis is performed client-side on the provided file/text
 
+### 4. **Threat Simulation Playground (v0.4)**
+
+Step through realistic multi-stage attack scenarios, analyze static logs and build detection skills - all running completely in your browser.
+
+**Features:**
+
+- 12 realistic attacker scenarios across phishing, cloud abuse, credential attacks, EDR evasion, lateral movement, crypto-mining, SaaS abuse & more
+- Step-by-step timelines with MITRE ATT&CK mappings
+- Static sample logs across multiple log sources (IDP, EDR, proxy, cloud, auth logs, container logs, etc.)
+- Defender-perspective notes + key detection signals
+- Interview Mode: hide hints to test your detection skills
+- Tag filtering (EDR, Cloud, AD, Identity, Network, SaaS, etc.)
+- Deterministic per-visit randomization for IPs, users, hosts, request IDs
+- Export full scenario or individual step as Markdown
+- Notes panel stored locally in your browser
+
 ## Upcoming Tools & Roadmap
 
 Security Webtools will expand into a full suite of privacy-first analysis utilities:
 
 ### **Planned tools:**
 
-- Threat Simulation Playground
 - Website Risk Reporter (TLS / Header / Tech-stack analyzer)
 - Mini SIEM (Log parsing + detection rules + alerting)
 - Cyber Hygiene Planner (automated security roadmap)
@@ -93,9 +108,9 @@ Security Webtools is a **React + Vite** single-page application with:
 
 _Every tool is isolated with its own rules & UI._
 
-## Live Website
+## Website
 
-**Coming soon: v1.0 public launch.**
+> Current live version: v0.4.0 - _Threat Simulation Playground release_
 
 ## License
 
