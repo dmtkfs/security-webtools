@@ -1155,7 +1155,7 @@ function ThreatPlayground({ onBack }) {
                     setScenarioNotes(e.target.value.slice(0, 20000))
                 }
                 maxLength={20000}
-                placeholder="Write your own detection ideas, queries or interview notes here. Saved locally in your browser."
+                placeholder="Write your own detection ideas, queries or interview notes here."
                 className="w-full min-h-20 rounded-xl bg-slate-950/60 border border-slate-800 px-3 py-2 text-[0.7rem] text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-400/60"
                 />
               <p className="text-[0.65rem] text-slate-400">
