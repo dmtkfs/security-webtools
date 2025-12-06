@@ -10,33 +10,36 @@
   <desc id="desc">Local-first security tools for developers and defenders.</desc>
 
   <defs>
+    <!-- Background -->
     <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#020617" />
-      <stop offset="40%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#020617" />
       <stop offset="100%" stop-color="#020617" />
     </linearGradient>
 
+    <!-- Softer green glow -->
     <radialGradient id="cornerGlow" cx="10%" cy="0%" r="70%">
-      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.35" />
-      <stop offset="40%" stop-color="#22c55e" stop-opacity="0.12" />
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.23" />
+      <stop offset="40%" stop-color="#22c55e" stop-opacity="0.10" />
       <stop offset="100%" stop-color="#020617" stop-opacity="0" />
     </radialGradient>
 
+    <!-- Blue glow -->
     <radialGradient id="sideGlow" cx="100%" cy="40%" r="70%">
-      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.25" />
-      <stop offset="40%" stop-color="#0ea5e9" stop-opacity="0.08" />
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.21" />
+      <stop offset="40%" stop-color="#0ea5e9" stop-opacity="0.07" />
       <stop offset="100%" stop-color="#020617" stop-opacity="0" />
     </radialGradient>
   </defs>
 
-  <!-- Background -->
+  <!-- Background layers -->
   <rect width="1200" height="630" fill="url(#bgGradient)" />
   <rect width="1200" height="630" fill="url(#cornerGlow)" />
   <rect width="1200" height="630" fill="url(#sideGlow)" />
 
-  <!-- Title group -->
-  <g transform="translate(150 170)">
-    <!-- Logo square -->
+  <!-- Title block -->
+  <g transform="translate(150 160)">
+    <!-- Logo -->
     <rect
       x="0"
       y="0"
@@ -83,73 +86,78 @@
     </text>
   </g>
 
-  <!-- Tool info panel -->
-  <g transform="translate(820 190)">
+  <!-- Tools panel -->
+  <g transform="translate(820 175)">
     <rect
       x="0"
       y="0"
       width="310"
-      height="210"
+      height="230"
       rx="26"
       fill="rgba(15,23,42,0.96)"
       stroke="rgba(148,163,184,0.45)"
-      stroke-width="1.5"
+      stroke-width="1"
     />
 
     <text
       x="24"
-      y="40"
+      y="42"
       font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
       font-size="16"
       font-weight="600"
-      fill="#e5e7eb"
+      fill="#f1f5f9"
     >
-      Runs in your browser
+      Available Tools
     </text>
 
+    <!-- Tool list -->
     <text
       x="24"
-      y="66"
-      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
-      font-size="13"
-      fill="#9ca3af"
-    >
-      Offline by design. No telemetry.
-    </text>
-
-    <text
-      x="24"
-      y="104"
-      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      y="84"
       font-size="14"
-      fill="#a7f3d0"
+      fill="#6ee7b7"
+      fill-opacity="0.94"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
     >
       Docker image checks
     </text>
 
     <text
       x="24"
-      y="132"
-      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      y="112"
       font-size="14"
-      fill="#a7f3d0"
+      fill="#6ee7b7"
+      fill-opacity="0.94"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
     >
       Local network exposure maps
     </text>
 
     <text
       x="24"
-      y="160"
-      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      y="140"
       font-size="14"
-      fill="#a7f3d0"
+      fill="#6ee7b7"
+      fill-opacity="0.94"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
     >
       Cloud misconfiguration scans
     </text>
+
+    <text
+      x="24"
+      y="168"
+      font-size="14"
+      fill="#6ee7b7"
+      fill-opacity="0.94"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    >
+      Threat simulation playground
+    </text>
   </g>
 
-  <!-- Bottom section -->
-  <g transform="translate(150 380)">
+  <!-- Bottom section (moved up slightly) -->
+  <g transform="translate(150 370)">
     <text
       x="0"
       y="36"
@@ -163,23 +171,34 @@
 
     <text
       x="0"
-      y="64"
+      y="72"
       font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
       font-size="16"
-      fill="#9ca3af"
+      fill="#cbd5e1"
     >
-      Inspect Dockerfiles, network scan results and cloud configs without sending data away.
+      Analyze configurations. Explore attack scenarios. Build detection skills.
+    </text>
+
+    <text
+      x="0"
+      y="104"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+      font-size="14.5"
+      fill="#9ca3af"
+      font-style="italic"
+    >
+      All tools run entirely in your browser. No servers, no uploads, no telemetry.
     </text>
   </g>
 
   <!-- Signature -->
   <text
     x="1080"
-    y="480"
+    y="500"
     text-anchor="end"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
     font-size="16"
-    fill="#6ee7b7"
+    fill="#86efac"
   >
     security-webtools
   </text>

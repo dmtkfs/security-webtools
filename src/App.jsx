@@ -5,12 +5,14 @@ import Home from './pages/Home.jsx';
 import DockerAnalyzer from './tools/docker-analyzer/DockerAnalyzer.jsx';
 import NetworkExposureMap from './tools/network-exposure-map/NetworkExposureMap.jsx';
 import CloudMisconfigScanner from './tools/cloud-misconfig/CloudMisconfigScanner.jsx';
+import ThreatPlayground from './tools/threat-playground/ThreatPlayground.jsx';
 import { cleanupTemp, getPersistent, setPersistent } from "./utils/storage";
 
 const TOOL_LABELS = {
   'docker-analyzer': 'Docker Image Security Analyzer',
   'network-exposure-map': 'Local Network Exposure Map',
   'cloud-misconfig': 'Cloud Misconfiguration Scanner',
+  'threat-playground': 'Threat Simulation Playground',
 };
 
 const TOOL_IDS = Object.keys(TOOL_LABELS);
@@ -73,6 +75,8 @@ function App() {
     content = <NetworkExposureMap onBack={handleBackToHome} />;
   } else if (activeTool === 'cloud-misconfig') {
     content = <CloudMisconfigScanner onBack={handleBackToHome} />;
+  } else if (activeTool === 'threat-playground') {
+  content = <ThreatPlayground onBack={handleBackToHome} />;
   } else {
     content = <Home onSelectTool={handleSelectTool} />;
   }

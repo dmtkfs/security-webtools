@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(),  // <-- THIS enables Tailwind v4
+    tailwindcss(), 
   ],
   base: '/security-webtools/',
 })

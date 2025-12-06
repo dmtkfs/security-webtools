@@ -31,8 +31,8 @@ function Home({ onSelectTool }) {
           />
           <ToolCard
             title="Threat Simulation Playground"
-            description="Explore simulated attack scenarios with synthetic logs, detections and MITRE ATT&CK mappings in an interactive UI."
-            status="coming-soon"
+            description="Step through realistic attack timelines with sample logs, MITRE mappings and defender notes. 100% local, no traffic generated."
+            onClick={() => onSelectTool('threat-playground')}
           />
           <ToolCard
             title="Website Risk Reporter"
