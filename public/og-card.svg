@@ -86,13 +86,13 @@
     </text>
   </g>
 
-  <!-- Tools panel -->
+    <!-- Tools panel -->
   <g transform="translate(820 175)">
     <rect
       x="0"
       y="0"
       width="310"
-      height="230"
+      height="260"
       rx="26"
       fill="rgba(15,23,42,0.96)"
       stroke="rgba(148,163,184,0.45)"
@@ -154,9 +154,20 @@
     >
       Threat simulation playground
     </text>
+
+    <text
+      x="24"
+      y="196"
+      font-size="14"
+      fill="#6ee7b7"
+      fill-opacity="0.94"
+      font-family="-apple-system, system-ui, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif"
+    >
+      Website surface inspection
+    </text>
   </g>
 
-  <!-- Bottom section (moved up slightly) -->
+  <!-- Bottom section -->
   <g transform="translate(150 370)">
     <text
       x="0"
@@ -176,7 +187,7 @@
       font-size="16"
       fill="#cbd5e1"
     >
-      Analyze configurations. Explore attack scenarios. Build detection skills.
+      Analyze configurations. Inspect websites. Explore attack scenarios. Build detection skills.
     </text>
 
     <text

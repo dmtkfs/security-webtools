@@ -35,9 +35,9 @@ function Home({ onSelectTool }) {
             onClick={() => onSelectTool('threat-playground')}
           />
           <ToolCard
-            title="Website Risk Reporter"
-            description="Analyze domains for TLS issues, HTTP security headers, cookie flags and tech stack exposure with a clean visual report."
-            status="coming-soon"
+            title="Web Surface Analyzer"
+            description="Analyze security headers and fingerprint a site’s tech stack from pasted responses. All analysis runs locally in your browser."
+            onClick={() => onSelectTool('web-surface-analyzer')}
           />
           <ToolCard
             title="Mini SIEM WebApp"
