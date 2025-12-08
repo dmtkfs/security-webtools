@@ -84,13 +84,25 @@ Step through realistic multi-stage attack scenarios, analyze static logs and bui
 - Export full scenario or individual step as Markdown
 - Notes panel stored locally in your browser
 
+### 5. **Web Surface Analyzer (v0.5)**
+
+Analyze a website’s browser-side posture from pasted responses: security headers, tech-stack fingerprints and client-side HTML issues - all without making network requests.
+
+**Features:**
+
+- Security header analysis: CSP, HSTS, XFO, XCTO, Referrer-Policy, COOP/COEP/CORP, Permissions-Policy & cookie flags  
+- Tech-stack fingerprinting from raw HTML (CMS, JS frameworks, CDNs, hosting hints, analytics, rendering mode)
+- Client-side HTML review for risky patterns (inline JS, mixed content, unsafe forms, javascript: URLs, inline event handlers, sensitive comments and more)
+- Severity badges and filtering controls
+- Export results as Markdown or copy summaries
+- Fully static: no fetching, scanning or external requests
+
 ## Upcoming Tools & Roadmap
 
 Security Webtools will expand into a full suite of privacy-first analysis utilities:
 
 ### **Planned tools:**
 
-- Website Risk Reporter (TLS / Header / Tech-stack analyzer)
 - Mini SIEM (Log parsing + detection rules + alerting)
 - Cyber Hygiene Planner (automated security roadmap)
 - Docker Image Security Analyzer (extended version)
@@ -110,7 +122,7 @@ _Every tool is isolated with its own rules & UI._
 
 ## Website
 
-> Current live version: v0.4.0 - _Threat Simulation Playground release_
+> Current live version: v0.5.0 - _Web Surface Analyzer release_
 
 ## License
 
