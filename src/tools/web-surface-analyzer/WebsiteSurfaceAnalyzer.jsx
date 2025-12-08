@@ -323,7 +323,7 @@ function WebsiteSurfaceAnalyzer({ onBack }) {
         <p className="text-sm text-slate-300 max-w-2xl">
           Analyze website security from the outside-in. Paste HTTP response
           headers or page HTML to assess browser-side hardening, fingerprint
-          the tech stack or scan for client-side security smells.
+          the tech stack or scan for client-side security risks.
         </p>
 
         {/* Tab switcher */}
@@ -737,7 +737,7 @@ function WebsiteSurfaceAnalyzer({ onBack }) {
             <div className="rounded-2xl border border-slate-800 bg-slate-950/70 px-4 py-3">
               <p className="text-xs text-slate-300">
                 Paste the full <span className="font-semibold">HTML source</span> of the
-                page to scan for client-side security smells (inline event
+                page to scan for client-side security risks (inline event
                 handlers, mixed-content hints, risky forms, comments with
                 secrets, etc.). No URLs are fetched; analysis is based only on
                 the pasted HTML.
@@ -801,9 +801,8 @@ function WebsiteSurfaceAnalyzer({ onBack }) {
               </p>
               <p className="mt-1 text-[11px] text-slate-300">
                 <span className="font-semibold text-slate-200">LOW</span>{' '}
-                is mostly hygiene and informational smells where risk is more
-                contextual (small inline JS/CSS, minimal comments, basic mixed
-                content hints).
+                indicates mostly hygiene-level or informational findings where impact is
+                minimal (small inline JS/CSS, benign comments, basic mixed-content hints).
               </p>
             </div>
           </div>
@@ -820,7 +819,7 @@ function WebsiteSurfaceAnalyzer({ onBack }) {
                         HTML security overview
                       </p>
                       <p className="text-sm font-medium text-slate-50">
-                        Client-side security smells
+                        Client-side security risks
                       </p>
                       <p className="text-xs text-slate-300 mt-1">
                         {htmlSecurityResult.overview}
@@ -893,7 +892,7 @@ function WebsiteSurfaceAnalyzer({ onBack }) {
                   {htmlSecurityResult.issues.length === 0 ? (
                     <div className="rounded-2xl border border-slate-800 bg-slate-950/70 px-4 py-3">
                       <p className="text-sm font-medium text-slate-100">
-                        No obvious client-side smells
+                        No obvious client-side risks
                       </p>
                       <p className="mt-1 text-xs text-slate-400">
                         No obvious risky patterns were detected in the markup, but this
@@ -956,7 +955,7 @@ function WebsiteSurfaceAnalyzer({ onBack }) {
                 <p className="mt-1 text-xs text-slate-400">
                   Paste HTML markup from a page to scan for inline handlers, forms
                   using GET for sensitive data, HTTP resources and other
-                  client-side smells. Detection is heuristic and based solely on
+                  client-side risks. Detection is heuristic and based solely on
                   the pasted HTML.
                 </p>
               </div>
@@ -1228,13 +1227,13 @@ function buildHtmlSecurityMarkdown(rawHtml, result) {
     );
     lines.push('');
   }
-  lines.push('> This is a heuristic review of client-side security smells only. It is not a full vulnerability scan and does not execute JavaScript.');
+  lines.push('> This is a heuristic review of client-side security risks only. It is not a full vulnerability scan and does not execute JavaScript.');
   lines.push('');
   lines.push('## Detected issues');
   lines.push('');
 
   if (!result.issues || result.issues.length === 0) {
-    lines.push('_No obvious client-side security smells detected from HTML alone._');
+    lines.push('_No obvious client-side security risks detected from HTML alone._');
   } else {
     for (const issue of result.issues) {
       lines.push(`### ${issue.title}`);
@@ -1287,7 +1286,7 @@ function buildHtmlSecurityTextSummary(result) {
     parts.join(' ') +
     stats +
     '\n\nIssues:\n' +
-    (issueLines || '- No obvious client-side security smells detected from HTML alone.')
+    (issueLines || '- No obvious client-side security risks detected from HTML alone.')
   );
 }
 

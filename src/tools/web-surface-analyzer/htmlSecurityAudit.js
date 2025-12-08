@@ -1,7 +1,7 @@
 /**
  * HTML client-side security audit (heuristic).
  * Flags inline JS/CSS, unsafe forms, mixed content, javascript: URLs,
- * iframes, comments with secrets and other browser-side smells
+ * iframes, comments with secrets and other browser-side risks
  *
  * @param {string} rawHtml
  * @returns {{
@@ -637,7 +637,7 @@ export function analyzeHtmlSecurity(rawHtml) {
 
   if (issues.length === 0) {
     overviewParts.push(
-      'No obvious client-side security smells were detected from HTML alone, but this does not guarantee the absence of vulnerabilities.'
+      'No obvious client-side security risks were detected from HTML alone, but this does not guarantee the absence of vulnerabilities.'
     );
   } else {
     overviewParts.push(

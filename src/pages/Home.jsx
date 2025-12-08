@@ -36,7 +36,7 @@ function Home({ onSelectTool }) {
           />
           <ToolCard
             title="Web Surface Analyzer"
-            description="Analyze security headers and fingerprint a site’s tech stack from pasted responses. All analysis runs locally in your browser."
+            description="Paste website headers or HTML to detect missing security controls, tech stack fingerprints and client-side risks."
             onClick={() => onSelectTool('web-surface-analyzer')}
           />
           <ToolCard
