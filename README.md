@@ -74,7 +74,7 @@ Step through realistic multi-stage attack scenarios, analyze static logs and bui
 
 **Features:**
 
-- 12 realistic attacker scenarios across phishing, cloud abuse, credential attacks, EDR evasion, lateral movement, crypto-mining, SaaS abuse & more
+- 14 realistic attacker scenarios across phishing, cloud abuse, credential attacks, EDR evasion, lateral movement, crypto-mining, SaaS abuse & more
 - Step-by-step timelines with MITRE ATT&CK mappings
 - Static sample logs across multiple log sources (IDP, EDR, proxy, cloud, auth logs, container logs, etc.)
 - Defender-perspective notes + key detection signals
