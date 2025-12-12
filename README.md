@@ -48,7 +48,6 @@ Visualize Nmap XML or generic JSON scan results to see exposed hosts, risky serv
 - Subnet view: /24 cluster map with color-coded host dots
 - Filters: search by IP/hostname, only-up hosts, high+medium only
 - Shows top exposed services in the current view
-- Lets you add custom high-risk ports/services (stored in LocalStorage)
 - Export current view as JSON, Markdown, CSV or copy a Markdown report
 - All parsing and analysis runs fully in-browser
 
@@ -116,7 +115,7 @@ Security Webtools is a **React + Vite** single-page application with:
 - TailwindCSS
 - Pure client-side JavaScript analysis modules
 - No backend of any kind
-- LocalStorage for preferences only
+- In-memory state for tool inputs and results
 
 _Every tool is isolated with its own rules & UI._
 
