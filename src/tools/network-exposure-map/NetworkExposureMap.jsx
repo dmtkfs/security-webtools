@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react'
+import React, { useState, useMemo, useRef } from 'react'
 import {
   parseScanFile,
   SAMPLE_SCAN_XML,
@@ -10,7 +10,6 @@ import {
 } from './scanParsers.js'
 import AboutSection from '../../components/AboutSection.jsx'
 import { downloadTextFile } from '../../utils/exportUtils.js'
-import {getTemp, setTemp, getPersistent, setPersistent } from '../../utils/storage.js'
 
 function riskBadgeClasses(level) {
   switch (level) {
@@ -168,70 +167,26 @@ function hostsToCsvReport(hosts) {
 }
 
 function NetworkExposureMap({ onBack }) {
-  const [hosts, setHosts] = useState(() => 
-    getTemp('sw_netmap_hosts', []),
-  )
+  const [hosts, setHosts] = useState([])
   const [error, setError] = useState(null)
   const [lastSource, setLastSource] = useState(null)
-  const [manualInput, setManualInput] = useState(() =>
-    getTemp('sw_netmap_manual', ''),
-  )
-  const [showOnlyElevated, setShowOnlyElevated] = useState(() =>
-    getPersistent('sw_netmap_showElevated', false),
-  )
+  const [manualInput, setManualInput] = useState('')
+  const [showOnlyElevated, setShowOnlyElevated] = useState(false)
   const [exportMessage, setExportMessage] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
-  const [onlyUpHosts, setOnlyUpHosts] = useState(() =>
-    getPersistent('sw_netmap_onlyUp', false),
-  )
-  const [viewMode, setViewMode] = useState(() =>
-    getPersistent('sw_netmap_viewMode', 'hosts'),
-  )
+  const [onlyUpHosts, setOnlyUpHosts] = useState(false)
+  const [viewMode, setViewMode] = useState('hosts')
 
   // Host detail side panel
   const [selectedHost, setSelectedHost] = useState(null)
 
   // Custom high-risk markers (UI-only, persisted locally)
-  const [userHighRiskPorts, setUserHighRiskPorts] = useState(() =>
-    getPersistent('sw_netmap_custom_ports', []),
-  )
-  const [userHighRiskServices, setUserHighRiskServices] = useState(() =>
-    getPersistent('sw_netmap_custom_services', []),
-  )
+  const [userHighRiskPorts, setUserHighRiskPorts] = useState([])
+  const [userHighRiskServices, setUserHighRiskServices] = useState([])
   const [newHighPort, setNewHighPort] = useState('')
   const [newHighService, setNewHighService] = useState('')
 
   const fileInputRef = useRef(null)
-
-  // Sync temp state to storage
-  useEffect(() => {
-    setTemp('sw_netmap_hosts', hosts)
-  }, [hosts])
-
-  useEffect(() => {
-    setTemp('sw_netmap_manual', manualInput)
-  }, [manualInput])
-
-  // Sync persistent prefs to storage
-  useEffect(() => {
-    setPersistent('sw_netmap_showElevated', showOnlyElevated)
-  }, [showOnlyElevated])
-
-  useEffect(() => {
-    setPersistent('sw_netmap_onlyUp', onlyUpHosts)
-  }, [onlyUpHosts])
-
-  useEffect(() => {
-    setPersistent('sw_netmap_viewMode', viewMode)
-  }, [viewMode])
-
-  useEffect(() => {
-    setPersistent('sw_netmap_custom_ports', userHighRiskPorts)
-  }, [userHighRiskPorts])
-
-  useEffect(() => {
-    setPersistent('sw_netmap_custom_services', userHighRiskServices)
-  }, [userHighRiskServices])
 
   // Helper: custom high-risk logic (adds on top of built-in)
   const isCustomHighRisk = (port) => {
@@ -554,20 +509,23 @@ function NetworkExposureMap({ onBack }) {
                 )
               </p>
 
-              <label className="block">
-                <span className="sr-only">Upload scan file</span>
+              <label className="inline-flex items-center">
+                <span className="inline-flex items-center justify-center
+                                px-3 py-1.5 rounded-full
+                                text-xs font-semibold
+                                bg-emerald-500/90 text-slate-950
+                                hover:bg-emerald-400/90 cursor-pointer">
+                  Browse…
+                </span>
+
                 <input
                   ref={fileInputRef}
                   type="file"
                   accept=".xml,.json,.txt"
                   onChange={handleFileChange}
-                  className="block w-full text-xs text-slate-200
-                             file:mr-3 file:py-1.5 file:px-3 file:rounded-full
-                             file:border-0 file:text-xs file:font-semibold
-                             file:bg-emerald-500/90 file:text-slate-950
-                             hover:file:bg-emerald-400/90 cursor-pointer"
+                  className="sr-only"
                 />
-              </label>
+            </label>
 
               {lastSource && (
                 <p className="mt-2 text-[0.7rem] text-slate-500">

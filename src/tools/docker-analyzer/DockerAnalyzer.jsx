@@ -1,33 +1,13 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import { analyzeDockerfile } from './dockerRules.js'
 import AboutSection from '../../components/AboutSection.jsx'
-import { getTemp, setTemp } from '../../utils/storage.js'
 import { downloadTextFile, findingsToMarkdown } from '../../utils/exportUtils.js'
 
 function DockerAnalyzer({ onBack }) {
-  // Persisted state (temp storage with TTL)
-  const [dockerfileText, setDockerfileText] = useState(() =>
-    getTemp('sw_docker_text', ''),
-  )
-  const [findings, setFindings] = useState(() =>
-    getTemp('sw_docker_findings', []),
-  )
-  const [hasAnalyzed, setHasAnalyzed] = useState(() =>
-    getTemp('sw_docker_hasAnalyzed', false),
-  )
-
-  // Sync to temp storage
-  useEffect(() => {
-    setTemp('sw_docker_text', dockerfileText)
-  }, [dockerfileText])
-
-  useEffect(() => {
-    setTemp('sw_docker_findings', findings)
-  }, [findings])
-
-  useEffect(() => {
-    setTemp('sw_docker_hasAnalyzed', hasAnalyzed)
-  }, [hasAnalyzed])
+  // Ephemeral state (in-memory only)
+  const [dockerfileText, setDockerfileText] = useState('')
+  const [findings, setFindings] = useState([])
+  const [hasAnalyzed, setHasAnalyzed] = useState(false)
 
   // Ephemeral UI state
   const [error, setError] = useState(null)

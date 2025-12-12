@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import AboutSection from '../../components/AboutSection.jsx'
-import { getTemp, setTemp } from '../../utils/storage.js'
 import { downloadTextFile, findingsToMarkdown } from '../../utils/exportUtils.js'
 import {
   analyzeMultiCloudConfig,
@@ -59,35 +58,10 @@ function safeParseJsonWithLocation(text) {
 }
 
 function CloudMisconfigScanner({ onBack }) {
-  const [configText, setConfigText] = useState(() =>
-    getTemp('sw_cloud_config_text', ''),
-  )
-  const [findings, setFindings] = useState(() =>
-    getTemp('sw_cloud_findings', []),
-  )
-  const [hasAnalyzed, setHasAnalyzed] = useState(() =>
-    getTemp('sw_cloud_hasAnalyzed', false),
-  )
-  const [detectedPlatform, setDetectedPlatform] = useState(() =>
-    getTemp('sw_cloud_detectedPlatform', null),
-  )
-
-  // Sync to temp storage (TTL-limited)
-  useEffect(() => {
-    setTemp('sw_cloud_config_text', configText)
-  }, [configText])
-
-  useEffect(() => {
-    setTemp('sw_cloud_findings', findings)
-  }, [findings])
-
-  useEffect(() => {
-    setTemp('sw_cloud_hasAnalyzed', hasAnalyzed)
-  }, [hasAnalyzed])
-
-  useEffect(() => {
-    setTemp('sw_cloud_detectedPlatform', detectedPlatform)
-  }, [detectedPlatform])
+  const [configText, setConfigText] = useState('')
+  const [findings, setFindings] = useState([])
+  const [hasAnalyzed, setHasAnalyzed] = useState(false)
+  const [detectedPlatform, setDetectedPlatform] = useState(null)
 
   // Ephemeral UI state
   const [error, setError] = useState(null)
