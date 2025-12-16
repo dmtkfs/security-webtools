@@ -7,6 +7,7 @@ import NetworkExposureMap from './tools/network-exposure-map/NetworkExposureMap.
 import CloudMisconfigScanner from './tools/cloud-misconfig/CloudMisconfigScanner.jsx';
 import ThreatPlayground from './tools/threat-playground/ThreatPlayground.jsx';
 import WebsiteSurfaceAnalyzer from './tools/web-surface-analyzer/WebsiteSurfaceAnalyzer.jsx';
+import MiniSiem from './tools/mini-siem/MiniSiem.jsx';
 import { cleanupTemp, getPersistent, setPersistent } from "./utils/storage";
 
 const TOOL_LABELS = {
@@ -15,6 +16,7 @@ const TOOL_LABELS = {
   'cloud-misconfig': 'Cloud Misconfiguration Scanner',
   'threat-playground': 'Threat Simulation Playground',
   'web-surface-analyzer': 'Web Surface Analyzer',
+  'mini-siem': 'Mini SIEM',
 };
 
 const TOOL_IDS = Object.keys(TOOL_LABELS);
@@ -81,6 +83,8 @@ function App() {
     content = <ThreatPlayground onBack={handleBackToHome} />;
   } else if (activeTool === 'web-surface-analyzer') {
     content = <WebsiteSurfaceAnalyzer onBack={handleBackToHome} />;
+  } else if (activeTool === 'mini-siem') {
+    content = <MiniSiem onBack={handleBackToHome} />;
   } else {
     content = <Home onSelectTool={handleSelectTool} />;
   }

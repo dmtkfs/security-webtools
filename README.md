@@ -89,12 +89,65 @@ Analyze a website’s browser-side posture from pasted responses: security heade
 
 **Features:**
 
-- Security header analysis: CSP, HSTS, XFO, XCTO, Referrer-Policy, COOP/COEP/CORP, Permissions-Policy & cookie flags  
+- Security header analysis: CSP, HSTS, XFO, XCTO, Referrer-Policy, COOP/COEP/CORP, Permissions-Policy & cookie flags
 - Tech-stack fingerprinting from raw HTML (CMS, JS frameworks, CDNs, hosting hints, analytics, rendering mode)
 - Client-side HTML review for risky patterns (inline JS, mixed content, unsafe forms, javascript: URLs, inline event handlers, sensitive comments and more)
 - Severity badges and filtering controls
 - Export results as Markdown or copy summaries
 - Fully static: no fetching, scanning or external requests
+
+### **6. Mini SIEM (v0.6)**
+
+Upload security and authentication logs, normalize events into a unified schema, run local correlation rules and explore alerts through time-windowed analytics - all running entirely in your browser.
+
+**Features:**
+
+- **_Multi-format log ingestion (auto-detection):_**
+  - JSON/JSONL (generic, Azure AD , CloudTrail, Okta, etc.)
+  - CSV (generic timestamp/IP/user exports, Mini SIEM format round-trip)
+  - Linux SSH/`auth.log` syslog
+  - Apache/Nginx access logs
+  - Windows Security (auth-focused exports)
+- **_Canonical event normalization:_**
+  - Timestamp parsing (ISO strings, epoch seconds/ms, numeric strings)
+  - Normalized outcomes (success/fail) across auth, HTTP, cloud and syslog sources
+  - Unified event model (IP, user, event type, outcome, protocol-specific fields)
+  - Preserves raw log lines for inspection and export
+- **_Parsing quality indicators:_**
+  - Parsed vs total records
+  - Coverage metrics and dataset time span
+- **_Time-windowed analytics:_**
+  - Presets: All time, last 1h/6h/12h/24h/7d/30d/12 months
+  - Adaptive event-density histogram with automatic or manual bucket sizing
+- **_Authentication analytics:_**
+  - Auth outcomes over time (success vs failure)
+  - Auth distribution (success/fail split)
+  - Failed authentication attempts by username
+- **_Entity & activity analytics:_**
+  - Top noisy source IPs
+  - Top usernames
+  - Event type breakdown
+  - Top destinations (IP/host)
+- **_Detection & alerting (local correlation rules):_**
+  - Bruteforce, password spray, suspicious success, noisy IPs, isolated failures
+  - Optional geo-anomaly detections via user-provided IP-to-region mappings
+  - Configurable "Home" regions and enable/disable geo logic
+  - Alert severity levels (high/medium/low)
+  - Alerts grouped by severity and rule category
+- **_Investigation workflow:_**
+  - Free-text search across normalized fields
+  - Alert-to-logs pivot ("view related events")
+  - Highlighted matches with raw log context
+- **_Overview dashboard:_**
+  - Statistics scoped to the selected time window
+  - Events, IPs, users, auth outcomes and alert counts
+- **_Export capabilities:_**
+  - Parsed events and alerts as JSON or CSV
+  - Alerts also export as Markdown or copy-to-clipboard
+  - Per-chart PNG exports with time window + bucket context
+  - Full overview PNG export (stats, charts, alerts, metadata)
+- **_Fully local execution:_**
+  - All parsing, correlation and visualization runs client-side in the browser
 
 ## Upcoming Tools & Roadmap
 
@@ -102,7 +155,6 @@ Security Webtools will expand into a full suite of privacy-first analysis utilit
 
 ### **Planned tools:**
 
-- Mini SIEM (Log parsing + detection rules + alerting)
 - Cyber Hygiene Planner (automated security roadmap)
 - Docker Image Security Analyzer (extended version)
 
@@ -121,7 +173,7 @@ _Every tool is isolated with its own rules & UI._
 
 ## Website
 
-> Current live version: v0.5.0 - _Web Surface Analyzer release_
+> Current live version: v0.6.0 - _Mini SIEM release_
 
 ## License
 

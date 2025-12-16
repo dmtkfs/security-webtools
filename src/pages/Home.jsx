@@ -40,9 +40,10 @@ function Home({ onSelectTool }) {
             onClick={() => onSelectTool('web-surface-analyzer')}
           />
           <ToolCard
-            title="Mini SIEM WebApp"
-            description="Upload logs, apply detection rules and review alerts in a lightweight browser-based SIEM-style interface."
-            status="coming-soon"
+            title="Mini SIEM"
+            description="Analyze local logs for suspicious behavior using client-side correlation rules."
+            status="available"
+            onClick={() => onSelectTool('mini-siem')}
           />
           <ToolCard
             title="Cyber Hygiene Planner"
