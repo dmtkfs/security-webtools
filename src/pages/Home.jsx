@@ -47,8 +47,9 @@ function Home({ onSelectTool }) {
           />
           <ToolCard
             title="Cyber Hygiene Planner"
-            description="Answer a short questionnaire and get a prioritized security roadmap tailored for small teams or projects."
-            status="coming-soon"
+            description="Generate a prioritized cybersecurity action plan using a local, profile-based questionnaire."
+            status="available"
+            onClick={() => onSelectTool('cyber-hygiene-planner')}
           />
           <ToolCard
             title="Local Network Exposure Map"

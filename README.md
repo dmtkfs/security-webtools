@@ -69,7 +69,7 @@ Analyze AWS, Azure or GCP JSON exports for common network, storage and IAM misco
 
 ### 4. **Threat Simulation Playground (v0.4)**
 
-Step through realistic multi-stage attack scenarios, analyze static logs and build detection skills - all running completely in your browser.
+Step through realistic multi-stage attack scenarios, analyze static logs and build detection skills entirely in your browser.
 
 **Features:**
 
@@ -85,7 +85,7 @@ Step through realistic multi-stage attack scenarios, analyze static logs and bui
 
 ### 5. **Web Surface Analyzer (v0.5)**
 
-Analyze a website’s browser-side posture from pasted responses: security headers, tech-stack fingerprints and client-side HTML issues - all without making network requests.
+Analyze a website’s browser-side posture from pasted responses: security headers, tech-stack fingerprints and client-side HTML issues without making network requests.
 
 **Features:**
 
@@ -98,7 +98,7 @@ Analyze a website’s browser-side posture from pasted responses: security heade
 
 ### **6. Mini SIEM (v0.6)**
 
-Upload security and authentication logs, normalize events into a unified schema, run local correlation rules and explore alerts through time-windowed analytics - all running entirely in your browser.
+Upload security and authentication logs, normalize events into a unified schema, run local correlation rules and explore alerts through time-windowed analytics entirely in your browser.
 
 **Features:**
 
@@ -149,13 +149,36 @@ Upload security and authentication logs, normalize events into a unified schema,
 - **_Fully local execution:_**
   - All parsing, correlation and visualization runs client-side in the browser
 
+### **7. Cyber Hygiene Planner (v0.7)**
+
+Answer a short, profile-aware questionnaire and receive a prioritized, actionable security roadmap fully generated in your browser.
+
+**Features:**
+
+- _Multi-step wizard tailored to:_
+  - Personal/home use
+  - Freelancers/contractors
+  - Small organizations (1-20 people)
+- Industry context support (general, payments, sensitive client data, online services)
+- _Covers core security domains:_
+  - Identity & Access
+  - Devices & Endpoints
+  - Data & Backups
+  - Network & Cloud
+  - Monitoring & Incident Response
+- _Generates:_
+  - **Quick Wins** (high-impact, low-effort actions)
+  - **Full Action Plan** grouped by domain and priority
+- Clear effort and ownership indicators (Self / With IT)
+- Evidence-aware reasoning (what triggered each recommendation)
+- Export action plans as PDF, Markdown, CSV, JSON
+
 ## Upcoming Tools & Roadmap
 
 Security Webtools will expand into a full suite of privacy-first analysis utilities:
 
 ### **Planned tools:**
 
-- Cyber Hygiene Planner (automated security roadmap)
 - Docker Image Security Analyzer (extended version)
 
 _These will be rolled out incrementally._
@@ -173,7 +196,7 @@ _Every tool is isolated with its own rules & UI._
 
 ## Website
 
-> Current live version: v0.6.0 - _Mini SIEM release_
+> Current live version: v0.7.0 - _Cyber Hygiene Planner release_
 
 ## License
 

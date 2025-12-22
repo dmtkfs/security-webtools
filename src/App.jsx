@@ -8,6 +8,7 @@ import CloudMisconfigScanner from './tools/cloud-misconfig/CloudMisconfigScanner
 import ThreatPlayground from './tools/threat-playground/ThreatPlayground.jsx';
 import WebsiteSurfaceAnalyzer from './tools/web-surface-analyzer/WebsiteSurfaceAnalyzer.jsx';
 import MiniSiem from './tools/mini-siem/MiniSiem.jsx';
+import CyberHygienePlanner from './tools/cyber-hygiene-planner/CyberHygienePlanner.jsx'
 import { cleanupTemp, getPersistent, setPersistent } from "./utils/storage";
 
 const TOOL_LABELS = {
@@ -17,6 +18,7 @@ const TOOL_LABELS = {
   'threat-playground': 'Threat Simulation Playground',
   'web-surface-analyzer': 'Web Surface Analyzer',
   'mini-siem': 'Mini SIEM',
+  'cyber-hygiene-planner': 'Cyber Hygiene Planner',
 };
 
 const TOOL_IDS = Object.keys(TOOL_LABELS);
@@ -85,6 +87,8 @@ function App() {
     content = <WebsiteSurfaceAnalyzer onBack={handleBackToHome} />;
   } else if (activeTool === 'mini-siem') {
     content = <MiniSiem onBack={handleBackToHome} />;
+  } else if (activeTool === 'cyber-hygiene-planner') {
+    content = <CyberHygienePlanner onBack={handleBackToHome} />;
   } else {
     content = <Home onSelectTool={handleSelectTool} />;
   }
